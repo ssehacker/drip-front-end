@@ -1,0 +1,35 @@
+{
+  "name": "drip-front-end",
+  "version": "0.0.1",
+  "description": "front-end for drip",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ssehacker/drip-front-end.git"
+  },
+  "author": "ssehacker@163.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ssehacker/drip-front-end/issues"
+  },
+  "homepage": "https://github.com/ssehacker/drip-front-end#readme",
+  "dependencies": {
+    "classnames": "^2.2.5"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
+  }
+}
