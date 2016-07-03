@@ -6,7 +6,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     entry: {
-        app: "./src/app/app.js"
+        app: "./src/pages/ArticlePreviewPage.js"
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -35,13 +35,21 @@ module.exports = {
             test: /\.less$/,
             loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
         },
+        // { 
+        //     test: /\.(png|jpg)$/, 
+        //     loader: 'url-loader?limit=8192&name=./images/[hash].[ext]' 
+        // },
+        // 为什么 image.size > 8192 也会被base64编码， 而且也无法打开?
         { 
-            test: /\.(png|jpg)$/, 
-            loader: 'url-loader?limit=8192' 
-        },
-        { 
-            test: /\.(png|woff|woff2|eot|ttf|svg)$/, 
+            test: /\.(woff|woff2|eot|ttf|svg)$/, 
             loader: 'url-loader?limit=100000' 
+        },
+        {
+            test: /.*\.(gif|png|jpe?g|svg)$/i,
+            loaders: [
+              'file?hash=sha512&digest=hex&name=[hash].[ext]',
+              'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
+            ]
         }]
     },
     plugins: [

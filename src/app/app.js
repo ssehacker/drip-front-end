@@ -5,23 +5,6 @@ require('./less/common.less');
 require('./less/main.less');
 
 
-let menuOption =[
-	{
-		title:'文章',
-		url: '/',
-		iconClass: 'icon-article1'
-	},
-	{
-		title: '关于',
-		url: '/about',
-		iconClass: 'icon-about1'
-	},
-	{
-		title: '联系我',
-		url: '/contact',
-		iconClass: 'icon-contact'
-	}
-];
+let Common = require('../components/Common.js');
 
-let Menu = require('../components/Menu.js');
-ReactDOM.render(<Menu option = {menuOption}/>, document.body);
+ReactDOM.render(<Common/>, document.getElementById('app'));
