@@ -10,4 +10,8 @@ util.throttle = function(fn, delay){
 	};
 };
 
+util.formatDate = function(datetime){
+	return new (Date.bind.apply(Date, datetime.match(/(\d+)/g)));
+};
+
 export default util;

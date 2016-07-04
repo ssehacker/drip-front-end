@@ -6,7 +6,7 @@ class Footer extends React.Component{
 
 	render(){
 		return (
-			<footer>footer</footer>
+			<footer className='drip-ui-footer'>footer</footer>
 			);
 	}
 }

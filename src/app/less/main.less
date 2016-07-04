@@ -143,15 +143,48 @@
 		position: absolute;
 	    width: 50px;
 	    height: 50px;
-	    border: 1px solid #ccc;
-	    border-radius: 50%;
 	    top: 13px;
 	    left: 10%;
-	    background: #eee;
+	    background: white;
+	    border-left: 1px solid #ef7068;
+	    border-right: 1px solid #ef7068;
+	    border-bottom: 1px solid #ef7068;
 	    text-align: center;
 	    line-height: 50px;
 	    font-size: 30px;
 	    color: #999;
+	    
+	    span {
+	    	display: block;
+	    	position: relative;
+	    	height: 20px;
+	    	font-size: 16px;
+	    	background: #ef7068;
+	    	color: white;
+	    	line-height: 20px;
+	    	&:before, &:after {
+	    	    position: absolute;
+			    left: 18px;
+			    content: '';
+			    z-index: -1;
+			    border-left: 8px dashed transparent;
+			    border-right: 8px solid transparent;
+		    }
+		    &:before {
+		    	border-bottom: 8px solid #ef7068;
+		    	top: -8px;
+		    }
+		    &:after {
+	    	    border-bottom: 8px solid #fff;
+	    	    top: -7px;
+		    }
+	    }
+	    p {
+	    	height: 30px;
+	    	font-size: 24px;
+	    	line-height: 30px;
+
+	    }
 	}
 	.drip-ui-article-item {
 		width: 70%;
@@ -257,7 +290,10 @@
 	}
 }
 
-
+.drip-ui-footer {
+	height: 200px;
+	background: #eeeeee;
+}
 
 
 @media only screen and (min-width : 375px) and (max-width : 768px) {

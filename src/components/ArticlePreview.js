@@ -1,6 +1,7 @@
 import TimeLine from './TimeLine';
 import ArticlePreviewItem from './ArticlePreviewItem';
 import CalendarDecorator from './CalendarDecorator';
+import util from './Util';
 
 class ArticlePreview extends React.Component{
 	constructor(props){
@@ -14,10 +15,12 @@ class ArticlePreview extends React.Component{
 				<TimeLine/>
 				{
 					this.props.articles.map((article,index)=> {
+						let datetime = util.formatDate(article.createDate);
+						console.log( datetime );
 						return (
 							<div key={'article.id'+index} className='drip-ui-article-item-wrapper'>
 								
-								<CalendarDecorator />
+								<CalendarDecorator datetime={datetime}/>
 								<ArticlePreviewItem  {...article} />
 							</div>
 							);
