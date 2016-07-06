@@ -1,11 +1,19 @@
+window.__config = {
+	env: 'dev'
+}
+
+
 import ArticlePreview from '../components/ArticlePreview';
 import Page from '../components/Page';
-
+import Article from '../components/Article';
 
 //common js or css
 require('../app/less/iconfont.less');
 require('../app/less/common.less');
 require('../app/less/main.less');
+
+let { Router, Route, Link, hashHistory, IndexRoute} = ReactRouter;
+
 
 class ArticlePreviewPage extends React.Component {
 	constructor(props){
@@ -28,12 +36,56 @@ class ArticlePreviewPage extends React.Component {
 		}
 		]
 		return (
-			<Page>
-				<ArticlePreview articles={articles}/>
-			</Page>
+			<ArticlePreview articles={articles}/>
 			);
 	}
 }
 
-ReactDOM.render(<ArticlePreviewPage /> , document.getElementById('app'));
+class ArticlePage extends React.Component {
+	constructor(props){
+		super(props);
+	}
+
+	render(){
+		return (<Article />);
+	}
+}
+
+class AboutPage extends React.Component {
+	constructor(props){
+		super(props);
+	}
+
+	render(){
+		return (
+			<div>AboutPage...</div>
+			);
+	}
+}
+
+class ContactPage extends React.Component {
+	constructor(props){
+		super(props);
+	}
+
+	render(){
+		return (
+			<div>ContactPage...</div>
+			);
+	}
+}
+
+
+ReactDOM.render((
+	<Router history={hashHistory}>
+		<Route path="/" component={Page}>
+			<IndexRoute component={ArticlePreviewPage}/>
+			<Route path="about" component={AboutPage}/>
+			<Route path="contact" component={ContactPage}/>
+			<Route path="article" component={ArticlePreviewPage}/>
+			<Route path="article/:id" component={ArticlePage}/>
+		</Route>
+		
+	</Router>
+) , document.getElementById('app'));
 

@@ -1,5 +1,6 @@
 import Box from './Box';
 import Button from './Button';
+let {Link} = ReactRouter;
 
 class ArticlePreviewItem extends React.Component{
 	constructor(props){
@@ -13,7 +14,7 @@ class ArticlePreviewItem extends React.Component{
 		};
 		return (
 			<Box className='drip-ui-article-item'>
-				<h4>{this.props.title}</h4>
+				<h4><Link to={'/article/'+this.props.id}>{this.props.title}</Link></h4>
 				<div className='cover'>
 					<img src={this.props.preImg}/>
 					<a href='#' className='drip-ui-article-item-link'>

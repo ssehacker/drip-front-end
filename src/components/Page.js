@@ -1,32 +1,13 @@
-window.__config = {
-	env: 'dev'
-}
-
 import Menu from './Menu';
 import Banner from './Banner';
 import Footer from './Footer';
-
+import util from './Util';
+let {loadConfig} = util;
 class Page extends React.Component{
 	constructor(props){
 		super(props)
 		this.menuConfig = {
-			option: [
-				{
-					title:'文章',
-					url: '/',
-					iconClass: 'icon-article1'
-				},
-				{
-					title: '关于',
-					url: '/about',
-					iconClass: 'icon-about1'
-				},
-				{
-					title: '联系我',
-					url: '/contact',
-					iconClass: 'icon-contact'
-				}
-			]
+			option: loadConfig().configure.menu
 		};
 
 		this.bannerConfig = {

@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import util from './Util';
-
+let {Link } = ReactRouter;
 class Menu extends React.Component{
 	constructor(props){
 		super(props);
@@ -32,7 +32,7 @@ class Menu extends React.Component{
 	render(){
 		var children = this.props.option.map((item, index)=>{
 			let clsname = classnames('iconfont', item.iconClass);
-			return (<li key={'menu-item'+index}><a className={clsname} href={item.url}>{item.title}</a></li>);
+			return (<li key={'menu-item'+index}><Link className={clsname} to={item.url}>{item.title}</Link></li>);
 		});
 
 		return (
