@@ -32,8 +32,8 @@ class Article extends React.Component{
 			<article className='drip-ui-article'>
 				<h4 className='drip-ui-article-title'>{this.state.article.title}</h4>
 				<p className='drip-ui-article-date'>{new Date(parseInt(this.state.article.createDate)).toLocaleDateString()}</p>
-				<section className='drip-ui-article-content'>
-					{this.state.article.content}
+				<section dangerouslySetInnerHTML = {{__html : this.state.article.content}} className='drip-ui-article-content markdown-body'>
+
 				</section>
 			</article>
 			);
