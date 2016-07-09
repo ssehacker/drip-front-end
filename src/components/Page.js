@@ -1,11 +1,11 @@
-import Menu from './Menu';
+import Header from './Header';
 import Banner from './Banner';
 import Footer from './Footer';
 import util from './Util';
 let {loadConfig} = util;
 class Page extends React.Component{
 	constructor(props){
-		super(props)
+		super(props);
 		this.menuConfig = {
 			option: loadConfig().configure.menu
 		};
@@ -19,7 +19,7 @@ class Page extends React.Component{
 	render(){
 		return (
 			<div>
-				<Menu {...this.menuConfig}/>
+				<Header {...this.menuConfig}/>
 				<Banner {...this.bannerConfig} />
 				{this.props.children}
 				<Footer />

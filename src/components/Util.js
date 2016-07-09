@@ -22,6 +22,6 @@ util.loadConfig = function(){
 		config = require('../config/config.prod.js');
 	}
 	return config;
-}
+};
 
 export default util;

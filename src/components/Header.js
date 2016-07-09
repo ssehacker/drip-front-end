@@ -1,7 +1,7 @@
 import classnames from 'classnames';
 import util from './Util';
 let {Link } = ReactRouter;
-class Menu extends React.Component{
+class Header extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
@@ -32,11 +32,11 @@ class Menu extends React.Component{
 	render(){
 		var children = this.props.option.map((item, index)=>{
 			let clsname = classnames('iconfont', item.iconClass);
-			return (<li key={'menu-item'+index}><Link className={clsname} to={item.url}>{item.title}</Link></li>);
+			return (<li key={'header-item'+index}><Link className={clsname} to={item.url}>{item.title}</Link></li>);
 		});
 
 		return (
-			<div className={classnames({'drip-ui-menu': true, 'hidden': this.state.isHidden})}>
+			<div className={classnames({'drip-ui-header': true, 'hidden': this.state.isHidden})}>
 				<ul>
 					{children}
 				</ul>
@@ -45,4 +45,4 @@ class Menu extends React.Component{
 	}
 }
 
-module.exports = Menu;
+module.exports = Header;

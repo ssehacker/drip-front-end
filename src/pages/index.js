@@ -18,25 +18,30 @@ let { Router, Route, Link, hashHistory, IndexRoute} = ReactRouter;
 class ArticlePreviewPage extends React.Component {
 	constructor(props){
 		super(props);
+		this.state= {
+			articles: []
+		};
+	}
+
+	componentDidMount(){
+
+		$.ajax({
+			url: '/api/article',
+			method: 'GET',
+			data: {currentPage: 1, pageSize: 10},
+			success: function(res){
+				console.log(res);
+				this.setState({
+					articles: res.articles
+				});
+			}.bind(this)
+		});
 	}
 
 	render(){
-		let articles = [
-		{
-			id: '1',
-			preImg: 'http://girlatlas.b0.upaiyun.com/7864/20160611/1009od9d6dhp68j2h0zq.jpg!mid',
-			title: '星爷不愧是喜剧之王',
-			createDate: '2016-6-20 18:23:44'
-		},
-		{
-			id: '2',
-			preImg: 'http://girlatlas.b0.upaiyun.com/7538/20160614/06514527lswxr4phpfak.jpg!mid',
-			title: '星爷不愧是喜剧之王',
-			createDate: '2016-6-28 18:23:44'
-		}
-		]
+
 		return (
-			<ArticlePreview articles={articles}/>
+			<ArticlePreview articles={this.state.articles}/>
 			);
 	}
 }

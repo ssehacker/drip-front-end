@@ -1,3 +1,6 @@
+*{
+	box-sizing: border-box;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -45,6 +48,15 @@ blockquote, q {
 	quotes: "" "";
 }
 
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+/* markdown */
 .markdown-body {
 	box-sizing: border-box;
 	min-width: 200px;

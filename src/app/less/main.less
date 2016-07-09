@@ -1,7 +1,7 @@
 *,*:before, *:after {
     box-sizing: border-box;
 }
-.drip-ui-menu {
+.drip-ui-header {
 	background: #333;
 	opacity:0.4;
 	filter:alpha(opacity=40);
@@ -40,7 +40,7 @@
 			
 	}
 }
-.drip-ui-menu.hidden {
+.drip-ui-header.hidden {
 	-webkit-transform: translateY( -100% );
     -ms-transform: translateY( -100% );
     transform: translateY( -100% );
@@ -293,6 +293,8 @@
 	font-size: 16px;
 	line-height: 16px;
 	border-radius: 3px;
+	background: #333;
+	display: inline-block;
 	color: white;
 	&:hover{
 		text-decoration: underline;
@@ -333,7 +335,7 @@
 
 
 @media only screen and (min-width : 375px) and (max-width : 768px) {
-	.drip-ui-menu {
+	.drip-ui-header {
 		padding: 0 4%;
 	}		
 }

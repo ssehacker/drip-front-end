@@ -1,18 +1,39 @@
-
 class Article extends React.Component{
 	constructor(props){
 		super(props);
+		this.state = {
+			article: {}
+		};
+	}
+
+	componentDidMount(){
+		let rexRes = location.hash.match(/#\/article\/(\w+)\??/);
+		if(rexRes && rexRes.length ===2){
+			let articleId = rexRes[1];
+			$.ajax({
+				url: '/api/article/'+articleId,
+				method: 'GET',
+				success :function (res) {
+					console.log(res);
+					if(res.code ===0){
+						this.setState({
+							article: res.article
+						});
+					}else{
+						alert(res.msg);
+					}
+				}.bind(this)
+			})
+		}
 	}
 
 	render(){
 		return (
 			<article className='drip-ui-article'>
-				<h4 className='drip-ui-article-title'>为什么周星驰的喜剧百看不厌？</h4>
-				<p className='drip-ui-article-date'>2016-7-3</p>
+				<h4 className='drip-ui-article-title'>{this.state.article.title}</h4>
+				<p className='drip-ui-article-date'>{new Date(parseInt(this.state.article.createDate)).toLocaleDateString()}</p>
 				<section className='drip-ui-article-content'>
-					<p>这里是正文....</p>
-					<p>这里是正文....</p>
-					<p>这里是正文....</p>
+					{this.state.article.content}
 				</section>
 			</article>
 			);

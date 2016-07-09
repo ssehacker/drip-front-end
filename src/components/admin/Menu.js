@@ -7,7 +7,7 @@ class Menu extends React.Component {
 
     render(){
         return (
-          <div><Link to="/article/new">写文章</Link></div>
+          <div className="drip-ui-menu"><Link to="/article/new">写文章</Link></div>
         );
     }
 }
