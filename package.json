@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/ssehacker/drip-front-end#readme",
   "dependencies": {
-    "classnames": "^2.2.5"
+    "classnames": "^2.2.5",
+    "markdown-it": "^7.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.9.1",

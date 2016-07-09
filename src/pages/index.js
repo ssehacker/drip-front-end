@@ -1,6 +1,6 @@
 window.__config = {
 	env: 'dev'
-}
+};
 
 
 import ArticlePreview from '../components/ArticlePreview';
