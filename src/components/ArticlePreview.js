@@ -14,7 +14,6 @@ class ArticlePreview extends React.Component{
 				{
 					this.props.articles.map((article,index)=> {
 						let datetime = new Date(parseInt(article.createDate));
-						console.log( datetime );
 						return (
 							<div key={'article.id'+index} className='drip-ui-article-item-wrapper'>
 								

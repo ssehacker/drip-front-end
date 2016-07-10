@@ -30,7 +30,6 @@ class ArticlePreviewPage extends React.Component {
 			method: 'GET',
 			data: {currentPage: 1, pageSize: 10},
 			success: function(res){
-				console.log(res);
 				this.setState({
 					articles: res.articles
 				});

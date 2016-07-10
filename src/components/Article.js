@@ -14,7 +14,6 @@ class Article extends React.Component{
 				url: '/api/article/'+articleId,
 				method: 'GET',
 				success :function (res) {
-					console.log(res);
 					if(res.code ===0){
 						this.setState({
 							article: res.article

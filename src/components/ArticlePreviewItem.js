@@ -7,6 +7,10 @@ class ArticlePreviewItem extends React.Component{
 		super(props);
 	}
 
+	parseCoding(){
+		return $("<div/>").html((this.props.preImg)).text();
+	}
+
 	render(){
 		let coverStyle = {
 			background: 'url('+this.props.preImg+')', 
@@ -16,13 +20,11 @@ class ArticlePreviewItem extends React.Component{
 			<Box className='drip-ui-article-item'>
 				<h4><Link to={'/article/'+this.props._id}>{this.props.title}</Link></h4>
 				<div className='cover'>
-					<img src={this.props.preImg}/>
-					<a href='#' className='drip-ui-article-item-link'>
+					<img src={this.parseCoding(this.props.preImg)}/>
+					<Link to={'/article/'+this.props._id} className='drip-ui-article-item-link'>
 						<Button>查看详情</Button>
-					</a>
+					</Link>
 				</div>
-
-				
 			</Box>
 			);
 	}
