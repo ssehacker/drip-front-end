@@ -42,8 +42,19 @@ class MarkDownEditor extends React.Component {
         let me = this;
         return (
             <div className="clearfix drip-ui-markdown">
-                <textarea className="drip-ui-markdown-editor" onChange={ me.handleContentChange.bind(me)}></textarea>
-                <div className="markdown-body drip-ui-markdown-preview" dangerouslySetInnerHTML={{__html: me._renderMarkdown() }}></div>
+                <div className="drip-ui-markdown-editor-wrap">
+                    <div className="drip-ui-md-header clearfix">
+                        <span>Markdown</span>
+                        <i>icon</i>
+                    </div>
+                    <textarea className="drip-ui-markdown-editor" onChange={ me.handleContentChange.bind(me)}></textarea>
+                </div>
+                <div className="drip-ui-markdown-preview-wrap">
+                    <div className="drip-ui-md-header clearfix">
+                        <span>Preview</span>
+                    </div>
+                    <div className="markdown-body drip-ui-markdown-preview" dangerouslySetInnerHTML={{__html: me._renderMarkdown() }}></div>
+                </div>
             </div>
         );
     }

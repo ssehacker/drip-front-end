@@ -1,24 +1,50 @@
-.drip-ui-admin{
+#app-admin{
+  height: 100%;
+  .drip-ui-admin{
+    height: inherit;
+    .drip-ui-article-title{
 
-  .article-editor {
-    .drip-ui-button {
+      .drip-ui-article-title-label{
+        line-height:50px;
+        h3 {
+          color: #A0AABF;
+          line-height: 50px;
+          margin-left: 1em;
+        }
+        button.drip-ui-button {
+          float: right;
+          margin: 10px 2em;
+          cursor: pointer;
+        }
+        h3 ,button.drip-ui-button {
+          display: inline-block;
+        }
 
+      }
+      input {
+        -webkit-border-radius:0;
+        -moz-border-radius: 0;
+        border-radius:0;
+        border: none;
+      }
+
+    }
+    .drip-ui-menu {
+      position: fixed;
+      left:0;
+      top: 0;
+      height: 100%;
+      background: #2a2a2a;
+      width: 100px;
     }
   }
 
 }
 
-.drip-ui-menu {
-  width: 19%;
-  float: left;
-  border: 1px solid #ccc;
-  min-height: 500px;
-}
 .article-editor {
   display: inline-block;
-  width: 80%;
-  padding: 50px 20px;
-  float: right;
+  width: 100%;
+  padding-left: 100px;
 }
 .drip-ui-article-title {
   width: 100%;
@@ -27,24 +53,46 @@
   }
 }
 .drip-ui-markdown {
-  height: 500px;
-  margin-top: 20px;
-  .drip-ui-markdown-editor, .drip-ui-markdown-preview{
+  height: 700px;
+  .drip-ui-markdown-editor-wrap, .drip-ui-markdown-preview-wrap{
     display: block;
     width: 50%;
-    padding: 30px 20px;
+    height: 100%;
     border: 1px solid #ccc;
+    overflow: hidden;
   }
-  .drip-ui-markdown-editor {
+  .drip-ui-md-header {
+    color: #A0AABF;
+    padding:1rem 1em 0.7rem;
+    border-bottom: 1px solid #ccc;
+    span {
+      float: left;
+    }
+    i {
+      float: right;
+    }
+  }
+  .drip-ui-markdown-editor-wrap {
     float: left;
+    textarea.drip-ui-markdown-editor {
+      border: none;
+    }
+  }
+  .drip-ui-markdown-editor{
+    width: 100%;
+    height: 100%;
     font-size: 16px;
     line-height: 1.6em;
   }
-  .drip-ui-markdown-preview {
+  .drip-ui-markdown-preview-wrap {
     height: 100%;
     border-left: none;
+    border-right: none;
     float: right;
     overflow: auto;
+  }
+  .drip-ui-markdown-preview {
+    padding: 10px;
   }
 }
 

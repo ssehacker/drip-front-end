@@ -71,10 +71,13 @@ class ArticleEditor extends React.Component {
         return (
             <div className="article-editor">
                 <div className="drip-ui-article-title">
+                    <div className="drip-ui-article-title-label clearfix">
+                        <h3>文章标题</h3>
+                        <button className="drip-ui-button" onClick={me.handleSubmit.bind(me)}>提交</button>
+                    </div>
                     <input onChange={me.handleTitleChange.bind(me)} name="title"/>
                 </div>
                 <MarkDownEditor ref="editor"/>
-                <button className="drip-ui-button" onClick={me.handleSubmit.bind(me)}>提交</button>
             </div>
         );
     }
