@@ -8,7 +8,7 @@ import Page from '../components/Page';
 import Article from '../components/Article';
 
 //common js or css
-require('../app/less/iconfont.less');
+// require('../app/less/iconfont.less');
 require('../app/less/common.less');
 require('../app/less/main.less');
 

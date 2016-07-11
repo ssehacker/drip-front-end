@@ -9,7 +9,7 @@ import MarkDownEditor from '../components/admin/MarkDownEditor';
 let { Router, Route, Link, hashHistory, IndexRoute} = ReactRouter;
 
 //admin css
-require('../app/less/iconfont.less');
+// require('../app/less/iconfont.less');
 require('../app/less/common.less');
 require('../app/less/main.less');
 require('../app/less/admin.less');

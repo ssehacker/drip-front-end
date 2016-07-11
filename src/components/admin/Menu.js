@@ -6,8 +6,25 @@ class Menu extends React.Component {
     }
 
     render(){
+        
         return (
-          <div className="drip-ui-menu"><Link to="/article/new">写文章</Link></div>
+          <div className="drip-ui-menu">
+              <div className="drip-ui-menu-expand"><i className="iconfont icon-round-right"></i></div>
+              <div className="drip-ui-menu-items">
+                  <Link to="/article/new">
+                      <i className="iconfont icon-tuxing"></i>
+                  </Link>
+                  <Link to="/article">
+                      <i className="iconfont icon-article"></i>
+                  </Link>
+                  <Link to="/profile">
+                      <i className="iconfont icon-profile"></i>
+                  </Link>
+              </div>
+              <div className="drip-ui-menu-index">
+                  <i className="iconfont icon-index"></i>
+              </div>
+          </div>
         );
     }
 }
