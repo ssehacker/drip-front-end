@@ -18,13 +18,32 @@ require('../app/less/admin.less');
 class AdminPage extends React.Component {
     constructor(props){
         super(props);
+        this.state={
+            isExpand: false
+        };
+    }
+
+    handleExpand(isExpand){
+        this.setState({
+            isExpand: isExpand
+        });
     }
 
     render(){
+        let me = this;
+        let minWidth = '46px';
+        let maxWidth = '150px';
+
+        let containerStyle = {
+            paddingLeft: this.state.isExpand? maxWidth: minWidth
+        };
+        let menuStyle = {
+            width:   this.state.isExpand? maxWidth: minWidth
+        };
         return (
             <div className="drip-ui-admin clearfix">
-                <Menu />
-                {this.props.children}
+                <Menu style={menuStyle} handleExpand={me.handleExpand.bind(me)}/>
+                <div className="drip-ui-container" style={containerStyle}>{this.props.children}</div>
             </div>
         );
     }
@@ -69,7 +88,7 @@ class ArticleEditor extends React.Component {
     render(){
         let me = this;
         return (
-            <div className="article-editor">
+            <div>
                 <div className="drip-ui-article-title">
                     <div className="drip-ui-article-title-label clearfix">
                         <h3>文章标题</h3>
