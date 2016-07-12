@@ -45,7 +45,7 @@ class MarkDownEditor extends React.Component {
                 <div className="drip-ui-markdown-editor-wrap">
                     <div className="drip-ui-md-header clearfix">
                         <span>Markdown</span>
-                        <i>icon</i>
+                        <i className="iconfont icon-quanping"></i>
                     </div>
                     <textarea className="drip-ui-markdown-editor" onChange={ me.handleContentChange.bind(me)}></textarea>
                 </div>

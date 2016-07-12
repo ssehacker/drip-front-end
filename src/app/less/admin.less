@@ -37,7 +37,8 @@
       background: #2a2a2a;
       color: #ccc;
       width: 46px;
-
+      transition: .6s;
+      overflow: hidden;
       a {
         text-decoration: none;
       }
@@ -46,11 +47,8 @@
         color: #ccc;
         padding: 9px 0;
         text-align: center;
-        width: 100%;
-        display: block;
-        &:hover {
-          background: #000;
-        }
+        width: 45px;
+        display: inline-block;
       }
       .drip-ui-menu-expand{
         margin-top: 20px;
@@ -61,10 +59,20 @@
         margin-top: 100px;
         a{
           display: block;
+          white-space: nowrap;
+          &:hover {
+            background: #000;
+          }
           .iconfont {
             font-size: 20px;
             color: #999;
             padding: 13px 0;
+          }
+          &>span{
+            //display: none;
+            opacity: 0;
+            color: #999;
+            font-size: 14px;
           }
         }
       }
@@ -72,6 +80,24 @@
         position: absolute;
         bottom: 10px;
         width: 100%;
+        a{
+          display: block;
+          white-space: nowrap;
+          color: #999;
+          span{
+            //display: none;
+            opacity: 0;
+          }
+        }
+
+      }
+
+    }
+    .drip-ui-show {
+      .drip-ui-menu-items a>span, .drip-ui-menu-index a>span {
+        opacity: 1;
+        transition: 1s;
+        //display: inline;
       }
     }
   }
@@ -80,6 +106,7 @@
 .drip-ui-container {
   width: 100%;
   padding-left: 46px;
+  transition: .6s;
   display: inline-block;
 }
 
@@ -102,11 +129,21 @@
     color: #A0AABF;
     padding:1rem 1em 0.7rem;
     border-bottom: 1px solid #ccc;
+    position: relative;
     span {
       float: left;
     }
-    i {
+    .iconfont {
       float: right;
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 30px;
+      padding: 7px;
+      cursor: pointer;
+      &:hover {
+        color: #666;
+      }
     }
   }
   .drip-ui-markdown-editor-wrap {

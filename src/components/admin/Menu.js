@@ -29,21 +29,27 @@ class Menu extends React.Component {
             'icon-jiankuohaoyuanzuo': me.state.isExpand
         });
         return (
-          <div className="drip-ui-menu" style={this.props.style}>
+          <div className={classnames({"drip-ui-menu":true, "drip-ui-show": me.state.isExpand})} style={this.props.style}>
               <div className="drip-ui-menu-expand" onClick={ me.handleExpand.bind(me) }><i className={expandClass}></i></div>
               <div className="drip-ui-menu-items">
                   <Link to="/article/new">
                       <i className="iconfont icon-tuxing"></i>
+                      <span>写文章</span>
                   </Link>
                   <Link to="/article">
                       <i className="iconfont icon-article"></i>
+                      <span>文章列表</span>
                   </Link>
                   <Link to="/profile">
                       <i className="iconfont icon-profile"></i>
+                      <span>设置</span>
                   </Link>
               </div>
               <div className="drip-ui-menu-index">
-                  <i className="iconfont icon-index"></i>
+                  <Link to="/">
+                      <i className="iconfont icon-index"></i>
+                      <span>官网逛逛</span>
+                  </Link>
               </div>
           </div>
         );
