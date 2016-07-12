@@ -32,15 +32,15 @@ class Menu extends React.Component {
           <div className={classnames({"drip-ui-menu":true, "drip-ui-show": me.state.isExpand})} style={this.props.style}>
               <div className="drip-ui-menu-expand" onClick={ me.handleExpand.bind(me) }><i className={expandClass}></i></div>
               <div className="drip-ui-menu-items">
-                  <Link to="/article/new">
+                  <Link to="/article/new" title="写文章">
                       <i className="iconfont icon-tuxing"></i>
                       <span>写文章</span>
                   </Link>
-                  <Link to="/article">
+                  <Link to="/article" title="文章列表">
                       <i className="iconfont icon-article"></i>
                       <span>文章列表</span>
                   </Link>
-                  <Link to="/profile">
+                  <Link to="/profile" title="设置">
                       <i className="iconfont icon-profile"></i>
                       <span>设置</span>
                   </Link>
