@@ -7,7 +7,7 @@ class Page extends React.Component{
 	constructor(props){
 		super(props);
 		this.menuConfig = {
-			option: loadConfig().configure.menu
+			items: loadConfig().configure.menu
 		};
 
 		this.bannerConfig = {

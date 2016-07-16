@@ -1,5 +1,7 @@
 import classnames from 'classnames';
 import util from './Util';
+import Button from './Button';
+
 let {Link } = ReactRouter;
 class Header extends React.Component{
 	constructor(props){
@@ -29,17 +31,30 @@ class Header extends React.Component{
 		}, 100), false);
 	}
 
-	render(){
-		var children = this.props.option.map((item, index)=>{
+	renderMenu(){
+		return this.props.items.map((item, index)=>{
 			let clsname = classnames('iconfont', item.iconClass);
 			return (<li key={'header-item'+index}><Link className={clsname} to={item.url}>{item.title}</Link></li>);
 		});
+	}
+
+	renderLinks(){
+		return this.props.links && this.props.links.map((item,index)=> {
+			return (<Button key={"header-link-"+index} title={item.title} onClick={item.onClick}/>);
+		});
+	}
+
+	render(){
+		let t = this;
 
 		return (
 			<div className={classnames({'drip-ui-header': true, 'hidden': this.state.isHidden})}>
 				<ul>
-					{children}
+					{ t.renderMenu() }
 				</ul>
+				<div className="drip-ui-header-links">
+					{ t.renderLinks() }
+				</div>
 			</div>
 			);
 	}
