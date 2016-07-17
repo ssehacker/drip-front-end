@@ -74,8 +74,19 @@ class TemplatePage extends React.Component{
                             let username = dialog.querySelector('input[name=username]').value;
                             let password = dialog.querySelector('input[name=password]').value;
 
-                            console.log('username==',username);
-                            console.log('password==', password);
+                            $.ajax({
+                                url: '/api/login',
+                                method: 'POST',
+                                data: {username, password},
+                                success: function(data){
+                                    if(data.code===0){
+                                        //login success.
+                                        location.href = '/admin';
+                                    }else{
+                                        alert(data.msg);
+                                    }
+                                }
+                            })
                             
 
                         },
@@ -102,9 +113,25 @@ class TemplatePage extends React.Component{
 
                             let username = dialog.querySelector('input[name=username]').value;
                             let password = dialog.querySelector('input[name=password]').value;
+                            let password2 = dialog.querySelector('input[name=password2]').value;
 
-                            console.log('username==',username);
-                            console.log('password==', password);
+                            if(password !==password2){
+                                alert("两次密码输入不同,请重新输入~");
+                                return;
+                            }
+
+                            $.ajax({
+                                url: '/api/user',
+                                method: 'POST',
+                                data: {username, password},
+                                success: function(data){
+                                    if(data.code === 0){
+                                        location.href = '/admin';
+                                    }else{
+                                        alert(data.msg);
+                                    }
+                                }
+                            });
 
 
                         },

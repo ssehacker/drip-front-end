@@ -69,7 +69,9 @@ function dialog(element, props){
     let screenWidth = $(window).width();
     let screenHeight = $(window).height();
     console.log(screenWidth +' * '+screenHeight);
-    wrapper.style = 'height: '+screenHeight+'px;width:'+screenWidth+'px;';
+    wrapper.style.height = screenHeight+'px';
+    wrapper.style.width = screenWidth+'px';
+    
     wrapper = document.body.appendChild( wrapper );
 
 
