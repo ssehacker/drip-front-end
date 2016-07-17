@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import util from './Util';
 import Button from './Button';
-
 let {Link } = ReactRouter;
 class Header extends React.Component{
 	constructor(props){

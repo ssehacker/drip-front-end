@@ -62,18 +62,58 @@ class TemplatePage extends React.Component{
             {
                 title: '登录',
                 onClick: function(){
-                    Dialog(<div>这里是内容</div>, {
-                        confirm: function(){console.log(this)},
+                    Dialog(<div className="login">
+                            <div className="dialog-line">
+                                <span>用户名:</span>
+                                <input name="username" type="text"/></div>
+                            <div className="dialog-line"><span>密&emsp;码:</span><input name="password" type="password"/></div>
+                        </div>, {
+                        confirm: function(){
+                            let dialog = ReactDOM.findDOMNode(this);
+
+                            let username = dialog.querySelector('input[name=username]').value;
+                            let password = dialog.querySelector('input[name=password]').value;
+
+                            console.log('username==',username);
+                            console.log('password==', password);
+                            
+
+                        },
                         abort: ()=>{console.log('取消')},
                         confirmTitle: '登录',
                         abortTitle: '取消',
-                        title: '用户注册'
+                        title: '用户登录'
                     });
                 }
 
             },
             {
                 title: '注册',
+                onClick: function(){
+                    Dialog(<div className="login">
+                        <div className="dialog-line">
+                            <span>用&ensp;户&ensp;名:</span>
+                            <input name="username" type="text"/></div>
+                        <div className="dialog-line"><span>密&emsp;&emsp;码:</span><input name="password" type="password"/></div>
+                        <div className="dialog-line"><span>确认密码:</span><input name="password2" type="password"/></div>
+                    </div>, {
+                        confirm: function(){
+                            let dialog = ReactDOM.findDOMNode(this);
+
+                            let username = dialog.querySelector('input[name=username]').value;
+                            let password = dialog.querySelector('input[name=password]').value;
+
+                            console.log('username==',username);
+                            console.log('password==', password);
+
+
+                        },
+                        abort: ()=>{console.log('取消')},
+                        confirmTitle: '注册',
+                        abortTitle: '取消',
+                        title: '新用户注册'
+                    });
+                }
             }
         ];
         return {items, links};

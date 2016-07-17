@@ -11,12 +11,12 @@ class Dialog extends React.Component{
 
     abort(){
         console.log('cancel');
-        this.props.abort && this.props.abort();
+        this.props.abort && this.props.abort.call(this);
     }
 
     confirm(){
         console.log('ok');
-        this.props.confirm && this.props.confirm();
+        this.props.confirm && this.props.confirm.call(this);
 
     }
 
@@ -27,7 +27,7 @@ class Dialog extends React.Component{
     render(){
         let t = this;
         return (
-            <div className={classnames('drip-ui-dialog', t.props.className )}>
+            <div ref="dialog" className={classnames('drip-ui-dialog', t.props.className )}>
                 <h3>{t.props.title}</h3>
                 <div className="drip-ui-dialog-content">
                     {t.props.children}
@@ -59,6 +59,9 @@ Dialog.propTypes = {
     className: React.PropTypes.string
 };
 
+export default dialog;
+
+
 function dialog(element, props){
 
     let wrapper = document.createElement('div');
@@ -83,13 +86,7 @@ function dialog(element, props){
         cleanup();
     };
 
-    let dialog = React.createElement(Dialog, props, element);
+    let dialog = <Dialog {...props}>{element}</Dialog>;
 
-    props.confirm = props.confirm.bind(dialog);
-    
-    let component = ReactDOM.render(dialog, wrapper);
-
+    ReactDOM.render(dialog, wrapper);
 }
-
-
-export default dialog;

@@ -372,9 +372,12 @@
 			line-height: 50px;
 			border-bottom: 1px solid #ccc;
 			font-weight: bold;
+			padding-left: 1em;
 		}
 		.drip-ui-dialog-content{
 			height : 200px;
+			display: flex;
+			align-items: center;
 			width: 100%;
 		}
 		.drip-ui-dialog-btn{
@@ -399,6 +402,26 @@
 	}
 }
 
+
+.login{
+	width: 100%;
+	.dialog-line {
+		height: 50px;
+		width: 200px;
+		display: flex;
+		align-items: center;
+		padding-left: 50px;
+		input {
+			height: 34px;
+			margin-left: 10px;
+			font-size: 16px;
+			padding: 4px 10px;
+		}
+		span{
+			white-space: nowrap;
+		}
+	}
+}
 
 @media only screen and (min-width : 375px) and (max-width : 768px) {
 	.drip-ui-header {
