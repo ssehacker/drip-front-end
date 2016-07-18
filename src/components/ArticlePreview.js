@@ -1,4 +1,4 @@
-import TimeLine from './TimeLine';
+import TimeLine from './Timeline';
 import ArticlePreviewItem from './ArticlePreviewItem';
 import CalendarDecorator from './CalendarDecorator';
 
