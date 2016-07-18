@@ -46,10 +46,10 @@ class Menu extends React.Component {
                   </Link>
               </div>
               <div className="drip-ui-menu-index">
-                  <Link to="/">
+                  <a onClick={()=>{location.href='/'}}>
                       <i className="iconfont icon-index"></i>
                       <span>官网逛逛</span>
-                  </Link>
+                  </a>
               </div>
           </div>
         );
