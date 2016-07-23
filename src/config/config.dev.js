@@ -1,5 +1,5 @@
 module.exports = {
-	cdn: '//127.0.0.1:9091',
+	cdn: '',
 	path: 'dist/',
 	configure: {
 		title: '周勇的博客',

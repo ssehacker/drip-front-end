@@ -1,5 +1,5 @@
 window.__config = {
-	env: 'prod'
+	env: 'dev'
 };
 
 
