@@ -28,7 +28,7 @@ class Banner extends React.Component{
 	componentDidMount(){
 		this.trigger = setInterval(()=>{
 			this.switchBackground();
-		}, 10*1000);
+		}, 60*1000);
 	}
 
 	componentWillUnMount(){
