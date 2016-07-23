@@ -3,7 +3,10 @@ const {Front, Back} =  FlipCard;
 
 class Banner extends React.Component{
 	constructor(props){
-		super(props)
+		super(props);
+		this.state ={
+			bgIndex: 0
+		};
 		let config;
 		if(__config.env === 'dev'){
 			config = require('../config/config.dev.js');
@@ -11,14 +14,32 @@ class Banner extends React.Component{
 			config = require('../config/config.prod.js');
 		}
 		this.host = [config.cdn, config.path].join('/');
+
+		this.colors = [ '#1fbda5', '#8c6954', '#542733'];
+	}
+
+
+	switchBackground(){
+		this.setState({
+			bgIndex: (this.state.bgIndex+1)%this.colors.length
+		});
+	}
+
+	componentDidMount(){
+		this.trigger = setInterval(()=>{
+			this.switchBackground();
+		}, 10*1000);
+	}
+
+	componentWillUnMount(){
+		clearInterval(this.trigger);
 	}
 
 
 	render(){
-		
-
+		let t = this;
 		return (
-			<div className='drip-ui-banner'>
+			<div className='drip-ui-banner' style={{background:t.colors[t.state.bgIndex]}}>
 				<FlipCard className='drip-ui-photo'>
 					<Front><img src={ this.host+require('../images/'+this.props.photo)}/></Front>
 					<Back>
