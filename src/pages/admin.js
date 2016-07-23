@@ -12,6 +12,8 @@ require('../app/less/main.less');
 require('../app/less/admin.less');
 
 import ArticleEditor from '../components/admin/ArticleEditor';
+import Profile from '../components/admin/Profile';
+import Article from '../components/admin/Article';
 
 class AdminPage extends React.Component {
     constructor(props){
@@ -54,6 +56,8 @@ ReactDOM.render((
         <Route path="/" component={AdminPage}>
             <IndexRoute component={ArticleEditor}/>
             <Route path="article/new" component={ArticleEditor} />
+            <Route path="article" component={Article}/>
+            <Route path="profile" component={Profile}/>
         </Route>
 
     </Router>
