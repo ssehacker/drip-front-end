@@ -58,7 +58,7 @@ class ArticleEditor extends React.Component {
                     </div>
                     <input onChange={me.handleTitleChange.bind(me)} name="title"/>
                 </div>
-                <MarkDownEditor ref="editor"/>
+                <MarkDownEditor ref="editor" defaultValue=""/>
             </div>
         );
     }
