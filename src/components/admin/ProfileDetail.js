@@ -6,7 +6,6 @@ import classnames from 'classnames';
 class ProfileDetail extends React.Component{
     constructor(props){
         super(props);
-        console.log('constructor: ',this.props);
         this.state ={
             mode: 0, //0 表示preview状态, 1 表示编辑
             name: this.props.name || '',
@@ -64,7 +63,6 @@ class ProfileDetail extends React.Component{
     render(){
         //暂时包括: 头像,昵称, 简介(一句话介绍自己),个性域名
         let me = this;
-        console.log('render: ', me.state);
         return (
             <div className="drip-ui-profile-detail">
                 <div className="photo">

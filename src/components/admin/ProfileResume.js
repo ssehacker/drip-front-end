@@ -7,7 +7,7 @@ class ProfileResume extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            defaultValue: ''
+            defaultValue: this.props.value || ''
         };
     }
 
@@ -19,8 +19,22 @@ class ProfileResume extends React.Component{
     }
 
     handleSubmit(){
-        console.log(this.refs.editor.getValue());
-
+        let value = this.refs.editor.getValue();
+        console.log(value);
+        $.ajax({
+            url: '/api/user',
+            method: 'PATCH',
+            data: {
+                resumeMD: value
+            },
+            success: (res)=> {
+                if(res.code === 0){
+                    alert('保存成功!');
+                }else{
+                    alert(res.msg);
+                }
+            }
+        })
     }
 
     render(){
@@ -31,7 +45,7 @@ class ProfileResume extends React.Component{
                     <span>Tips:以下信息将在你博客中的&quot;关于我&quot;页面中展示.</span>
                     <button className="btn-1" onClick={me.handleSubmit.bind(me)}>保存</button>
                 </div>
-                <MarkDownEditor ref="editor" defaultValue=""/>
+                <MarkDownEditor ref="editor" defaultValue={me.state.defaultValue}/>
 
             </div>
         );

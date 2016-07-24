@@ -20,7 +20,6 @@ class Profile extends React.Component{
             url: '/api/user',
             method: 'GET',
             success: function (res) {
-                console.log(res.data);
                 if(res.code === 0){
                     me.setState({
                         user: res.data
@@ -40,8 +39,7 @@ class Profile extends React.Component{
         //     photo:'https://avatars1.githubusercontent.com/u/9441414?v=3&s=200'
         // };
         let me = this;
-        let {resume, ...other} = me.state.user;
-        console.log('other: ', other);
+        let {resumeMD, ...other} = me.state.user;
         return (
             <div>
                 <Tabs defaultKey="tab1">
@@ -49,7 +47,7 @@ class Profile extends React.Component{
                         <ProfileDetail {...other}/>
                     </TabPanel>
                     <TabPanel key="tab2" title="个人档案">
-                        <ProfileResume value={resume}/>
+                        <ProfileResume value={resumeMD}/>
                     </TabPanel>
                 </Tabs>
             </div>

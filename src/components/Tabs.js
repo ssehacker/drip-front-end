@@ -21,7 +21,6 @@ class Tabs extends React.Component{
     renderHeader(){
         let headers = [], me = this;
         me.props.children.forEach((child)=>{
-            console.log(child.key);
             headers.push(
                 <a className={classnames({'title': true, 'active': child.key === this.state.activeKey})}
                    key={child.key}
