@@ -37,7 +37,7 @@ class ProfileDetail extends React.Component{
             <div className="drip-ui-profile-detail">
                 <div className="photo">
                     <img src={me.props.photo}/>
-                    <button className="btn-edit" onClick={me.switchMode.bind(me)}>{me.state.mode===0? '编辑' : '保存'}</button>
+                    <button className="btn-1" onClick={me.switchMode.bind(me)}>{me.state.mode===0? '编辑' : '保存'}</button>
                 </div>
                 <div className={classnames({'detail-view': true, 'hidden': me.state.mode===1})}>
                     <p><label>用&ensp;户&ensp;名:</label><span>{me.state.name}</span></p>

@@ -20,7 +20,7 @@ class MarkDownEditor extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            value: ''
+            value: this.props.defaultValue
         };
     }
 
@@ -59,5 +59,13 @@ class MarkDownEditor extends React.Component {
         );
     }
 }
+
+React.defaultProps = {
+    defaultValue: ''
+};
+
+React.propTypes = {
+    defaultValue: React.PropTypes.string
+};
 
 export default MarkDownEditor;

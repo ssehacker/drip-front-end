@@ -4,6 +4,7 @@
 import Tabs from '../Tabs';
 let {TabPanel} = Tabs;
 import ProfileDetail from './ProfileDetail';
+import ProfileResume from './ProfileResume';
 
 class Profile extends React.Component{
     constructor(props){
@@ -26,7 +27,7 @@ class Profile extends React.Component{
                         <ProfileDetail {...user}/>
                     </TabPanel>
                     <TabPanel key="tab2" title="个人档案">
-                        标签二
+                        <ProfileResume />
                     </TabPanel>
                 </Tabs>
             </div>
