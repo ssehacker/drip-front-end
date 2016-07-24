@@ -21,6 +21,21 @@ class Menu extends React.Component {
         this.props.handleExpand( !isExpand );
     }
 
+    logout(){
+        $.ajax({
+            url: '/api/logout',
+            method: 'POST',
+            data: {},
+            success: function (data) {
+                if(data.code ===0){
+                    location.href='/';
+                }else{
+                    alert(data.msg);
+                }
+            }
+        });
+    }
+
     render(){
         let me = this;
         let expandClass = classnames({
@@ -49,6 +64,10 @@ class Menu extends React.Component {
                   <a onClick={()=>{location.href='/'}}>
                       <i className="iconfont icon-index"></i>
                       <span>官网逛逛</span>
+                  </a>
+                  <a onClick={me.logout.bind(me)}>
+                      <i className="iconfont icon-quit"></i>
+                      <span>退出</span>
                   </a>
               </div>
           </div>
