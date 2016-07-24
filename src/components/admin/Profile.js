@@ -9,25 +9,47 @@ import ProfileResume from './ProfileResume';
 class Profile extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            user: {}
+        };
+    }
 
+    componentDidMount(){
+        let me = this;
+        $.ajax({
+            url: '/api/user',
+            method: 'GET',
+            success: function (res) {
+                console.log(res.data);
+                if(res.code === 0){
+                    me.setState({
+                        user: res.data
+                    });
+                }
+
+            }
+        });
     }
 
     render(){
-        let user = {
-            name: 'zhouyong',
-            nick: '周勇',
-            domain: 'zhouyong.com',
-            desc: '我是周勇',
-            photo:'https://avatars1.githubusercontent.com/u/9441414?v=3&s=200'
-        };
+        // let user = {
+        //     name: 'zhouyong',
+        //     nick: '周勇',
+        //     domain: 'zhouyong.com',
+        //     desc: '我是周勇',
+        //     photo:'https://avatars1.githubusercontent.com/u/9441414?v=3&s=200'
+        // };
+        let me = this;
+        let {resume, ...other} = me.state.user;
+        console.log('other: ', other);
         return (
             <div>
                 <Tabs defaultKey="tab1">
                     <TabPanel key="tab1" title="基本信息">
-                        <ProfileDetail {...user}/>
+                        <ProfileDetail {...other}/>
                     </TabPanel>
                     <TabPanel key="tab2" title="个人档案">
-                        <ProfileResume />
+                        <ProfileResume value={resume}/>
                     </TabPanel>
                 </Tabs>
             </div>
