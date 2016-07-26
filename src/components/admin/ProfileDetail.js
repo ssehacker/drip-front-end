@@ -17,12 +17,26 @@ class ProfileDetail extends React.Component{
     }
 
     componentWillReceiveProps(nextProps){
+        let me = this;
         this.setState({
             name: nextProps.name,
             nick: nextProps.nick,
             domain: nextProps.domain,
             desc: nextProps.desc,
             photo: nextProps.photo
+        });
+
+        //file uploading validation
+        $('input[name=photo]').change(function(){
+           /* var file = this.files[0];
+            var name = file.name;
+            var size = file.size;
+            var type = file.type;
+            console.log(name);
+            console.log(size);
+            console.log(type);*/
+
+            me.handleUpload();
         });
     }
 
@@ -59,6 +73,39 @@ class ProfileDetail extends React.Component{
         });
 
     }
+
+    handleUpload(){
+        let me =this;
+        var formData = new FormData(ReactDOM.findDOMNode(this.refs.form));
+        console.log(ReactDOM.findDOMNode(this.refs.form));
+        $.ajax({
+            url: '/api/upload/photo',  //Server script to process data
+            type: 'POST',
+            xhr: function() {  // Custom XMLHttpRequest
+                var myXhr = $.ajaxSettings.xhr();
+                return myXhr;
+            },
+            //Ajax events
+            // beforeSend: beforeSendHandler,
+            success: (res)=>{
+                console.log(res);
+                me.setState({
+                    photo: res.data
+                });
+            },
+            // error: errorHandler,
+            // Form data
+            data: formData,
+            //Options to tell jQuery not to process data or worry about content-type.
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    }
+
+    handleImgClick(){
+        $('input[name=photo]').trigger('click');
+    }
     
     render(){
         //暂时包括: 头像,昵称, 简介(一句话介绍自己),个性域名
@@ -66,7 +113,15 @@ class ProfileDetail extends React.Component{
         return (
             <div className="drip-ui-profile-detail">
                 <div className="photo">
-                    <img src={me.props.photo}/>
+                    <div className="img-wrap">
+                        <img src={me.state.photo}/>
+                        <div className="img-cover" onClick={me.handleImgClick.bind(me)}>
+                            <span>上传头像</span>
+                        </div>
+                        <form ref="form" encType="multipart/form-data">
+                            <input type="file" name="photo"/>
+                        </form>
+                    </div>
                     <button className="btn-1" onClick={me.switchMode.bind(me)}>{me.state.mode===0? '编辑' : '保存'}</button>
                 </div>
                 <div className={classnames({'detail-view': true, 'hidden': me.state.mode===1})}>
