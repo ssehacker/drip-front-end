@@ -89,9 +89,14 @@ class ProfileDetail extends React.Component{
             // beforeSend: beforeSendHandler,
             success: (res)=>{
                 console.log(res);
-                me.setState({
-                    photo: res.data
-                });
+                if(res.code ===0){
+                    me.setState({
+                        photo: res.data
+                    });
+                }else{
+                    alert(res.msg);
+                }
+
             },
             // error: errorHandler,
             // Form data
