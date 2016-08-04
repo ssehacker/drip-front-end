@@ -13,7 +13,7 @@ class Banner extends React.Component{
 		}else {
 			config = require('../config/config.prod.js');
 		}
-		this.host = [config.cdn, config.path].join('/');
+		this.host = config.cdn;
 
 		this.colors = [ '#1fbda5', '#8c6954', '#542733'];
 	}
@@ -41,7 +41,7 @@ class Banner extends React.Component{
 		return (
 			<div className='drip-ui-banner' style={{background:t.colors[t.state.bgIndex]}}>
 				<FlipCard className='drip-ui-photo'>
-					<Front><img src={ this.host+require('../images/'+this.props.photo)}/></Front>
+					<Front><img src={ t.host + this.props.photo}/></Front>
 					<Back>
 						<div className='drip-ui-photo-title'>
 							<h4>醒醒</h4>

@@ -9,18 +9,37 @@ class Page extends React.Component{
 		this.menuConfig = {
 			items: loadConfig().configure.menu
 		};
-
-		this.bannerConfig = {
-			photo: 'me.jpg',
-			title: '周勇的博客'
+		
+		this.state = {
+			user: {}
 		};
 	}
 
+	componentDidMount(){
+		let me = this;
+		$.ajax({
+			url: '/api/profile',
+			method: 'GET',
+			success: (res)=>{
+				if(res.code ===0){
+					me.setState({
+						user: res.user
+					});
+				}else{
+					console.error(res.msg);
+				}
+			}
+		});
+	}
+
 	render(){
+		let me = this;
+		let {photo, nick} = me.state.user;
+		let title = nick+'的博客';
 		return (
 			<div>
 				<Header {...this.menuConfig}/>
-				<Banner {...this.bannerConfig} />
+				<Banner photo={photo} title={title}/>
 				{this.props.children}
 				<Footer />
 			</div>
