@@ -56,7 +56,7 @@ class Banner extends React.Component{
 }
 
 Banner.defaultProps = {
-	photo: 'default-photo.jpeg',
+	photo: '',
 	title: '我的博客'
 };
 
