@@ -319,8 +319,25 @@
 }
 
 .drip-ui-footer {
-	height: 200px;
+	height: 150px;
 	background: #333;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	p, a{
+		color: white;
+		letter-spacing: 1px;
+		font-size: 14px;
+	}
+	a{
+		text-decoration: none;
+		&:hover {
+			color: #1fbda5;
+		}
+	}
+	p{
+		text-align: center;
+	}
 }
 
 .drip-ui-article {

@@ -6,7 +6,9 @@ class Footer extends React.Component{
 
 	render(){
 		return (
-			<footer className='drip-ui-footer'>footer</footer>
+			<footer className='drip-ui-footer'>
+				<p>&copy;<a href="//1xue.me">drip blog system</a> {new Date().getFullYear()}</p>
+			</footer>
 			);
 	}
 }
