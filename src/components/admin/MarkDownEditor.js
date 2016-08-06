@@ -44,14 +44,21 @@ class MarkDownEditor extends React.Component {
             <div className="clearfix drip-ui-markdown">
                 <div className="drip-ui-markdown-editor-wrap">
                     <div className="drip-ui-md-header clearfix">
-                        <span>Markdown</span>
-                        <i title="全屏" className="iconfont icon-quanping"></i>
+                        <div className="tips">
+                            <span>Markdown</span>
+                            <i title="全屏" className="iconfont icon-quanping"></i>
+                        </div>
+                        <div className="tools">
+                            <span>图片</span>
+                        </div>
                     </div>
                     <textarea className="drip-ui-markdown-editor" value={me.state.value} onChange={ me.handleContentChange.bind(me)}></textarea>
                 </div>
                 <div className="drip-ui-markdown-preview-wrap">
                     <div className="drip-ui-md-header clearfix">
-                        <span>Preview</span>
+                        <div className="tips">
+                            <span>Preview</span>
+                        </div>
                     </div>
                     <div className="markdown-body drip-ui-markdown-preview" dangerouslySetInnerHTML={{__html: me._renderMarkdown() }}></div>
                 </div>

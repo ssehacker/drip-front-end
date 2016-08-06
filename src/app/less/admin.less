@@ -1,208 +1,228 @@
-#app-admin{
-  height: 100%;
-  .drip-ui-admin{
-    height: inherit;
-    .drip-ui-article-title{
+#app-admin {
+	height: 100%;
+	.drip-ui-admin {
+		height: inherit;
+		.drip-ui-article-title {
 
-      .drip-ui-article-title-label{
-        line-height:50px;
-        h3 {
-          color: #A0AABF;
-          line-height: 50px;
-          margin-left: 1em;
-        }
-        button.drip-ui-button {
-          float: right;
-          margin: 10px 2em;
-          cursor: pointer;
-        }
-        h3 ,button.drip-ui-button {
-          display: inline-block;
-        }
+			.drip-ui-article-title-label {
+				line-height: 50px;
+				h3 {
+					color: #A0AABF;
+					line-height: 50px;
+					margin-left: 1em;
+				}
+				button.drip-ui-button {
+					float: right;
+					margin: 10px 2em;
+					cursor: pointer;
+				}
+				h3, button.drip-ui-button {
+					display: inline-block;
+				}
 
-      }
-      input {
-        -webkit-border-radius:0;
-        -moz-border-radius: 0;
-        border-radius:0;
-        border: none;
-      }
+			}
+			input {
+				-webkit-border-radius: 0;
+				-moz-border-radius: 0;
+				border-radius: 0;
+				border: none;
+			}
 
-    }
-    .drip-ui-menu {
-      position: fixed;
-      left:0;
-      top: 0;
-      height: 100%;
-      background: #2a2a2a;
-      color: #ccc;
-      width: 46px;
-      transition: .6s;
-      overflow: hidden;
-      a {
-        text-decoration: none;
-      }
-      .iconfont {
-        font-size: 28px;
-        color: #ccc;
-        padding: 9px 0;
-        text-align: center;
-        width: 45px;
-        display: inline-block;
-      }
-      .drip-ui-menu-expand{
-        margin-top: 20px;
-        cursor: pointer;
+		}
+		.drip-ui-menu {
+			position: fixed;
+			left: 0;
+			top: 0;
+			height: 100%;
+			background: #2a2a2a;
+			color: #ccc;
+			width: 46px;
+			transition: .6s;
+			overflow: hidden;
+			a {
+				text-decoration: none;
+			}
+			.iconfont {
+				font-size: 28px;
+				color: #ccc;
+				padding: 9px 0;
+				text-align: center;
+				width: 45px;
+				display: inline-block;
+			}
+			.drip-ui-menu-expand {
+				margin-top: 20px;
+				cursor: pointer;
 
-      }
-      .drip-ui-menu-items{
-        margin-top: 100px;
-        a{
-          display: block;
-          white-space: nowrap;
-          &:hover {
-            background: #000;
-          }
-          .iconfont {
-            font-size: 20px;
-            color: #999;
-            padding: 13px 0;
-          }
-          &>span{
-            //display: none;
-            opacity: 0;
-            color: #999;
-            font-size: 14px;
-          }
-        }
-      }
-      .drip-ui-menu-index{
-        position: absolute;
-        bottom: 10px;
-        width: 100%;
-        a{
-          display: block;
-          white-space: nowrap;
-          color: #999;
-          cursor: pointer;
-          span{
-            //display: none;
-            opacity: 0;
-          }
-        }
+			}
+			.drip-ui-menu-items {
+				margin-top: 100px;
+				a {
+					display: block;
+					white-space: nowrap;
+					&:hover {
+						background: #000;
+					}
+					.iconfont {
+						font-size: 20px;
+						color: #999;
+						padding: 13px 0;
+					}
+					& > span {
+						//display: none;
+						opacity: 0;
+						color: #999;
+						font-size: 14px;
+					}
+				}
+			}
+			.drip-ui-menu-index {
+				position: absolute;
+				bottom: 10px;
+				width: 100%;
+				a {
+					display: block;
+					white-space: nowrap;
+					color: #999;
+					cursor: pointer;
+					span {
+						//display: none;
+						opacity: 0;
+					}
+				}
 
-      }
+			}
 
-    }
-    .drip-ui-show {
-      .drip-ui-menu-items a>span, .drip-ui-menu-index a>span {
-        opacity: 1;
-        transition: 1s;
-        //display: inline;
-      }
-    }
-  }
+		}
+		.drip-ui-show {
+			.drip-ui-menu-items a > span, .drip-ui-menu-index a > span {
+				opacity: 1;
+				transition: 1s;
+				//display: inline;
+			}
+		}
+	}
 
 }
+
 .drip-ui-container {
-  width: 100%;
-  padding-left: 46px;
-  transition: .6s;
-  display: inline-block;
+	width: 100%;
+	padding-left: 46px;
+	transition: .6s;
+	display: inline-block;
 }
 
 .drip-ui-article-title {
-  width: 100%;
-  input{
-    width: 100%;
-  }
+	width: 100%;
+	input {
+		width: 100%;
+	}
 }
+
 .drip-ui-markdown {
-  height: 700px;
-  .drip-ui-markdown-editor-wrap, .drip-ui-markdown-preview-wrap{
-    display: block;
-    width: 50%;
-    height: 100%;
-    border: 1px solid #ccc;
-    overflow: hidden;
-  }
-  .drip-ui-md-header {
-    color: #A0AABF;
-    padding:1rem 1em 0.7rem;
-    border-bottom: 1px solid #ccc;
-    position: relative;
-    span {
-      float: left;
-    }
-    .iconfont {
-      float: right;
-      position: absolute;
-      right: 0;
-      top: 0;
-      font-size: 30px;
-      padding: 7px;
-      cursor: pointer;
-      &:hover {
-        color: #666;
-      }
-    }
-  }
-  .drip-ui-markdown-editor-wrap {
-    float: left;
-    textarea.drip-ui-markdown-editor {
-      border: none;
-    }
-  }
-  .drip-ui-markdown-editor{
-    width: 100%;
-    height: 100%;
-    font-size: 16px;
-    line-height: 1.6em;
-  }
-  .drip-ui-markdown-preview-wrap {
-    height: 100%;
-    border-left: none;
-    border-right: none;
-    float: right;
-    overflow: auto;
-  }
-  .drip-ui-markdown-preview {
-    padding: 10px;
-  }
+	height: 700px;
+	.drip-ui-markdown-editor-wrap, .drip-ui-markdown-preview-wrap {
+		display: block;
+		width: 50%;
+		height: 100%;
+		border: 1px solid #ccc;
+		overflow: hidden;
+		position: relative;
+		.drip-ui-markdown-tools {
+
+		}
+	}
+	.drip-ui-md-header {
+		position: absolute;
+		width: 100%;
+		height: 90px;
+		border-bottom: 1px solid #ccc;
+		.tips {
+			color: #A0AABF;
+			padding: 1rem 1em 0.7rem;
+			border-bottom: 1px solid #ccc;
+			height: 44px;
+			span {
+				float: left;
+			}
+			.iconfont {
+				float: right;
+				position: absolute;
+				right: 0;
+				top: 0;
+				font-size: 30px;
+				padding: 7px;
+				cursor: pointer;
+				&:hover {
+					color: #666;
+				}
+			}
+		}
+		.tools {
+			height: 46px;
+			line-height: 46px;
+		}
+	}
+	.drip-ui-markdown-editor-wrap {
+		position: relative;
+		float: left;
+		textarea.drip-ui-markdown-editor {
+			border: none;
+		}
+	}
+	.drip-ui-markdown-editor {
+		width: 100%;
+		height: calc(~"100% - 90px");
+		margin-top: 90px;
+		font-size: 16px;
+		line-height: 1.6em;
+	}
+	.drip-ui-markdown-preview-wrap {
+		height: 100%;
+		position: relative;
+		border-left: none;
+		border-right: none;
+		float: right;
+	}
+	.drip-ui-markdown-preview {
+		padding: 10px;
+		margin-top: 90px;
+		height: calc(~"100% - 90px");
+		overflow: auto;
+	}
 }
-
-
 
 input {
-  padding: 6px 12px;
-  width: 100%;
-  height: 34px;
-  font-size: 14px;
-  line-height: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: white;
-  color: #555;
-  webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-  &:focus {
-    border-color: #66afe9;
-    outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
-  }
+	padding: 6px 12px;
+	width: 100%;
+	height: 34px;
+	font-size: 14px;
+	line-height: 14px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background: white;
+	color: #555;
+	webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	&:focus {
+		border-color: #66afe9;
+		outline: 0;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+	}
 }
+
 textarea {
-  padding: 6px 12px;
-  height: 100%;
-  width: 100%;
-  background: white;
-  font-size: 14px;
-  line-height: 14px;
-  border: 1px solid #ccc;
+	padding: 6px 12px;
+	height: 100%;
+	width: 100%;
+	background: white;
+	font-size: 14px;
+	line-height: 14px;
+	border: 1px solid #ccc;
 }
 
 
