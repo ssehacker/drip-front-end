@@ -59,8 +59,6 @@ Dialog.propTypes = {
     className: React.PropTypes.string
 };
 
-export default dialog;
-
 
 function dialog(element, props){
 
@@ -92,3 +90,5 @@ function dialog(element, props){
 
     ReactDOM.render(dialog, wrapper);
 }
+
+export default dialog;

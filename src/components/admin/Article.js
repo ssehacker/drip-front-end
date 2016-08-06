@@ -2,6 +2,7 @@
  * Created by ssehacker on 16/7/23.
  */
 import ArticleItem from './ArticleItem';
+import _ from 'underscore';
 
 class Article extends React.Component{
     constructor(props){
@@ -30,8 +31,20 @@ class Article extends React.Component{
         
     }
 
+    deleteArticle(id){
+        let articles = this.state.articles;
+        articles = _.filter(articles, (article)=> {
+            return article._id !== id; 
+        });
+        this.setState({
+            articles
+        });
+    }
+
     renderArticles(){
         return this.state.articles.map((article, i)=> {
+            article.deleteArticle = this.deleteArticle.bind(this);
+            
             return <ArticleItem key={article._id} {...article}/>;
         });
     }

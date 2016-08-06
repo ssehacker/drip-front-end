@@ -420,6 +420,51 @@
 	}
 }
 
+.drip-ui-confirm-wrap{
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(99, 99, 99, 0.4);
+	top: 0;
+	left: 0;
+	.drip-ui-confirm{
+		width: 400px;
+		height: 150px;
+		margin: auto;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		background: #fff;
+		.drip-ui-confirm-content{
+			height : 100px;
+			display: flex;
+			align-items: center;
+			justify-content:center;
+			width: 100%;
+		}
+		.drip-ui-confirm-btn{
+			height: 50px;
+			cursor: pointer;
+			a{
+				height: 100%;
+				text-align: center;
+				width: 50%;
+				display: inline-block;
+				line-height: 50px;
+				text-decoration: none;
+				background: #eee;
+				color: #1fbda5;
+				&:hover {
+					background: #ddd;
+				}
+			}
+			a:first-child{
+				border-right: 1px solid #ccc;
+			}
+		}
+	}
+}
+
 .drip-ui-tabs{
 	width: 80%;
 	margin:0 auto;
