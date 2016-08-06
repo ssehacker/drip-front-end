@@ -28,7 +28,6 @@ class ArticleEditor extends React.Component {
         if(title && content){
             let art = this.updatedArticle;
             if(art){
-                console.log('update', art);
                 $.ajax({
                     url: '/api/article/'+ art._id,
                     method: 'PUT',
@@ -39,6 +38,8 @@ class ArticleEditor extends React.Component {
                     success: (res)=>{
                         if(res.code ===0){
                             alert('更新成功');
+                            window.__article = null;
+                            delete window.__article;
                         }else{
                             alert(res.msg);
                         }
@@ -76,7 +77,7 @@ class ArticleEditor extends React.Component {
                 <div className="drip-ui-article-title">
                     <div className="drip-ui-article-title-label clearfix">
                         <h3>文章标题</h3>
-                        <button className="drip-ui-button" onClick={me.handleSubmit.bind(me)}>提交</button>
+                        <button className="drip-ui-button" onClick={me.handleSubmit.bind(me)}>{me.updatedArticle ? '更新': '发表'}</button>
                     </div>
                     <input onChange={me.handleTitleChange.bind(me)} defaultValue={this.updatedArticle && this.updatedArticle.title || ''} name="title"/>
                 </div>

@@ -41,6 +41,10 @@ class Article extends React.Component{
         });
     }
 
+    handlePageClick(add){
+        
+    }
+
     renderArticles(){
         return this.state.articles.map((article, i)=> {
             article.deleteArticle = this.deleteArticle.bind(this);
@@ -56,6 +60,10 @@ class Article extends React.Component{
                 <div className="title">我的文章</div>
                 <div className="list">
                     {me.renderArticles()}
+                </div>
+                <div className="page">
+                    <a onClick={me.handlePageClick.bind(me, -1)}>上一页</a>
+                    <a>下一页</a>
                 </div>
             </div>
         );
