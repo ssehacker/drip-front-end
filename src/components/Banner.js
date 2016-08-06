@@ -1,4 +1,5 @@
 import FlipCard from './FlipCard';
+
 const {Front, Back} =  FlipCard;
 
 class Banner extends React.Component{
@@ -7,12 +8,6 @@ class Banner extends React.Component{
 		this.state ={
 			bgIndex: 0
 		};
-		let config;
-		if(__config.env === 'dev'){
-			config = require('../config/config.dev.js');
-		}else {
-			config = require('../config/config.prod.js');
-		}
 
 		this.colors = [ '#1fbda5', '#8c6954', '#542733'];
 	}
