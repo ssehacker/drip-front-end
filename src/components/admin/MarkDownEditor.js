@@ -2,6 +2,7 @@
  * Created by ssehacker on 16/7/9.
  */
 import util from '../Util';
+import classnames from 'classnames';
 
 var md = window.markdownit({
     highlight: function (str, lang) {
@@ -21,7 +22,8 @@ class MarkDownEditor extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            value: this.props.defaultValue
+            value: this.props.defaultValue,
+            isFullScreen: false
         };
     }
     
@@ -146,15 +148,27 @@ class MarkDownEditor extends React.Component {
         this.makeEditorFocus();
     }
 
+    switchFullScreen(){
+        this.setState({
+            isFullScreen: !this.state.isFullScreen
+        });
+    }
+
     render(){
         let me = this;
         return (
             <div className="clearfix drip-ui-markdown">
-                <div className="drip-ui-markdown-editor-wrap">
+                <div className={classnames({'drip-ui-markdown-editor-wrap': true, 'full-screen': me.state.isFullScreen})}>
                     <div className="drip-ui-md-header clearfix">
                         <div className="tips">
                             <span>Markdown</span>
-                            <i title="全屏" className="iconfont icon-quanping"></i>
+                            <i title="全屏"
+                               onClick={me.switchFullScreen.bind(me)}
+                               className={classnames({
+                                    'iconfont': true,
+                                    'icon-quanping': !me.state.isFullScreen,
+                                    'icon-tuichuquanping': me.state.isFullScreen})}>
+                            </i>
                         </div>
                         <div className="tools">
                             <i className="iconfont icon-cuti" onMouseDown={me.boldFont.bind(me)}></i>
