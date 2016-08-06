@@ -7,8 +7,10 @@ import MarkDownEditor from './MarkDownEditor';
 class ArticleEditor extends React.Component {
     constructor(props){
         super(props);
+        this.updatedArticle = window.__article;
+        
         this.state = {
-            title: ''
+            title: this.updatedArticle && this.updatedArticle.title || ''
         };
     }
 
@@ -24,22 +26,42 @@ class ArticleEditor extends React.Component {
 
 
         if(title && content){
-            $.ajax({
-                url: '/api/article',
-                method: 'POST',
-                data: {
-                    content,
-                    title
-                },
-                success: function(data){
-                    if(data.code ===0){
-                        //todo: use dialog
-                        alert('发表成功');
-                    }else{
-                        alert('发表失败:'+data.msg);
+            let art = this.updatedArticle;
+            if(art){
+                console.log('update', art);
+                $.ajax({
+                    url: '/api/article/'+ art._id,
+                    method: 'PUT',
+                    data: {
+                        title,
+                        content
+                    },
+                    success: (res)=>{
+                        if(res.code ===0){
+                            alert('更新成功');
+                        }else{
+                            alert(res.msg);
+                        }
                     }
-                }
-            });
+                });
+            }else{
+                $.ajax({
+                    url: '/api/article',
+                    method: 'POST',
+                    data: {
+                        content,
+                        title
+                    },
+                    success: function(res){
+                        if(res.code ===0){
+                            //todo: use dialog
+                            alert('发表成功');
+                        }else{
+                            alert('发表失败:'+res.msg);
+                        }
+                    }
+                });
+            }
         }else{
             alert('标题或者内容不能为空啊亲~');
         }
@@ -56,9 +78,9 @@ class ArticleEditor extends React.Component {
                         <h3>文章标题</h3>
                         <button className="drip-ui-button" onClick={me.handleSubmit.bind(me)}>提交</button>
                     </div>
-                    <input onChange={me.handleTitleChange.bind(me)} name="title"/>
+                    <input onChange={me.handleTitleChange.bind(me)} defaultValue={this.updatedArticle && this.updatedArticle.title || ''} name="title"/>
                 </div>
-                <MarkDownEditor ref="editor" defaultValue=""/>
+                <MarkDownEditor ref="editor" defaultValue={me.updatedArticle && me.updatedArticle.markdown || ''}/>
             </div>
         );
     }

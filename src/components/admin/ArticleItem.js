@@ -29,6 +29,11 @@ class ArticleItem extends React.Component{
 
 	}
 
+	handleUpdate(){
+		window.__article = $.extend({}, this.props);
+		util.toPage('/article/new');
+	}
+
 	render(){
 		let me = this;
 		let config = util.loadConfig();
@@ -48,7 +53,7 @@ class ArticleItem extends React.Component{
 				</div>
 				<div className="option">
 					<p className="option-wrapper">
-						<i className="iconfont icon-write"></i>
+						<i className="iconfont icon-write" onClick={me.handleUpdate.bind(me)}></i>
 						<i className="iconfont icon-delete" onClick={me.handleDelete.bind(me)}></i>
 					</p>
 				</div>

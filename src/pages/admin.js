@@ -61,6 +61,7 @@ ReactDOM.render((
         <Route path="/" component={AdminPage}>
             <IndexRoute component={ArticleEditor}/>
             <Route path="article/new" component={ArticleEditor} />
+            <Route path="article/update" component={ArticleEditor} />
             <Route path="article" component={Article}/>
             <Route path="profile" component={Profile}/>
         </Route>

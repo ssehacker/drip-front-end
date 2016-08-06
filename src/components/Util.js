@@ -1,4 +1,5 @@
 let util = {};
+let {hashHistory} = ReactRouter;
 util.throttle = function(fn, delay){
 	var timer = null;
 	return function(){
@@ -55,5 +56,8 @@ util.setCaretPosition = function(ctrl, pos){
 	}
 };
 
+util.toPage = function (url) {
+	hashHistory.push(url);
+};
 
 export default util;
