@@ -31,13 +31,6 @@ class Profile extends React.Component{
     }
 
     render(){
-        // let user = {
-        //     name: 'zhouyong',
-        //     nick: '周勇',
-        //     domain: 'zhouyong.com',
-        //     desc: '我是周勇',
-        //     photo:'https://avatars1.githubusercontent.com/u/9441414?v=3&s=200'
-        // };
         let me = this;
         let {resumeMD, ...other} = me.state.user;
         return (
