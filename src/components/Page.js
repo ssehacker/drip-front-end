@@ -42,7 +42,9 @@ class Page extends React.Component{
 			<div>
 				<Header {...this.menuConfig}/>
 				<Banner photo={photo} title={title}/>
-				{children}
+				<div className="drip-ui-page-container">
+					{children}
+				</div>
 				<Footer />
 			</div>
 			)

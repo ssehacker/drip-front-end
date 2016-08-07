@@ -43,7 +43,7 @@ class Banner extends React.Component{
 						</div>
 					</Back>
 				</FlipCard>
-				<h1 className='css44c9c1f15647b'>{this.props.title}</h1>
+				<h1 className='css44c9c1f15647b'>{this.props.title || ''}</h1>
 			</div>
 			)
 	}

@@ -66,7 +66,7 @@ function dialog(element, props){
     wrapper.className = 'drip-ui-dialog-wrap';
     let screenWidth = $(window).width();
     let screenHeight = $(window).height();
-    console.log(screenWidth +' * '+screenHeight);
+    
     wrapper.style.height = screenHeight+'px';
     wrapper.style.width = screenWidth+'px';
     

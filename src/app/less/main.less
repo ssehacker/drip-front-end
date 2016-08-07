@@ -420,6 +420,39 @@
 	}
 }
 
+.drip-ui-loading-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(0,0,0,0.3);
+	z-index: 100;
+	.drip-ui-loading {
+		background: #333;
+		border-radius: 6px;
+		width: 100px;
+		height: 100px;
+		img{
+			width: 60px;
+			height: 60px;
+			margin: 10px auto;
+			display: block;
+		}
+		p{
+			font-size: 13px;
+			color: white;
+			text-align: center;
+			line-height: 13px;
+			letter-spacing: 1px;
+		}
+	}
+}
+
+.drip-ui-page-container {
+	min-height: 600px;
+}
 .drip-ui-confirm-wrap{
 	position: absolute;
 	display: flex;
