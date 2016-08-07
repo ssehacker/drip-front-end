@@ -36,11 +36,13 @@ class Page extends React.Component{
 		let me = this;
 		let {photo, nick} = me.state.user;
 		let title = nick+'的博客';
+
+		let children = React.cloneElement(me.props.children, {user: this.state.user});
 		return (
 			<div>
 				<Header {...this.menuConfig}/>
 				<Banner photo={photo} title={title}/>
-				{this.props.children}
+				{children}
 				<Footer />
 			</div>
 			)
