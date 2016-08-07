@@ -53,6 +53,7 @@
 		align-items: center;
 		height: 100%;
 		.drip-ui-button{
+			cursor: pointer;
 			margin: 0 10px;
 		}
 	}
@@ -371,7 +372,8 @@
 }
 
 .drip-ui-dialog-wrap{
-	position: absolute;
+	position: fixed;
+	z-index: 100;
 	display: flex;
 	justify-content: center;
 	align-items: center;
