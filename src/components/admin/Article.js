@@ -4,8 +4,9 @@
 import ArticleItem from './ArticleItem';
 import _ from 'underscore';
 import classnames from 'classnames';
+import CommonNode from '../basic/CommonNode';
 
-class Article extends React.Component{
+class Article extends CommonNode{
     constructor(props){
         super(props);
         this.pageSize = 5;
@@ -26,7 +27,8 @@ class Article extends React.Component{
             method: 'GET',
             success: (res)=> {
                 if(res.code ===0){
-                    // console.log(res);
+                    this.loading.stop();
+                    
                     this.pageCount = res.pageCount;
                     this.setState({
                         articles: res.articles

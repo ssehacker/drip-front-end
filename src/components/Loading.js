@@ -40,8 +40,6 @@ loading.stop = function () {
 	setTimeout(()=>{
 		this.loadWrapper.remove();
 	}, 0);
-
-	console.log('stop...');
 };
 
 export default loading;
