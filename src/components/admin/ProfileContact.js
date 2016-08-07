@@ -43,7 +43,7 @@ class ProfileContact extends React.Component{
         return (
             <div className="drip-ui-profile-contact">
                 <div className="tips-info">
-                    <span>Tips:以下信息将在你博客中的&quot;联系为&quot;页面中展示.</span>
+                    <span>Tips:以下信息将在你博客中的&quot;联系我&quot;页面中展示.</span>
                     <button className="btn-1" onClick={me.handleSubmit.bind(me)}>保存</button>
                 </div>
                 <MarkDownEditor ref="editor" defaultValue={me.state.defaultValue}/>
