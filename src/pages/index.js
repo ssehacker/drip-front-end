@@ -7,6 +7,7 @@ import ArticlePreview from '../components/ArticlePreview';
 import Page from '../components/Page';
 import Article from '../components/Article';
 import AboutPage from '../components/AboutPage';
+import ContactPage from '../components/ContactPage'
 
 //common js or css
 // require('../app/less/iconfont.less');
@@ -55,19 +56,6 @@ class ArticlePage extends React.Component {
 		return (<Article />);
 	}
 }
-
-class ContactPage extends React.Component {
-	constructor(props){
-		super(props);
-	}
-
-	render(){
-		return (
-			<div>ContactPage...</div>
-			);
-	}
-}
-
 
 ReactDOM.render((
 	<Router history={hashHistory}>

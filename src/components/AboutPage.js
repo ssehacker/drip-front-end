@@ -2,13 +2,11 @@
  * Created by ssehacker on 16/8/7.
  */
 
-class AboutPage extends React.Component {
+import SimplePage from './SimplePage';
+
+class AboutPage extends SimplePage {
 	constructor(props){
 		super(props);
-	}
-
-	componentDidMount(){
-		
 	}
 
 	getInnerHtml(){
@@ -17,14 +15,6 @@ class AboutPage extends React.Component {
 		};
 	}
 
-	render(){
-		let me = this;
-		return (
-			<div className="drip-ui-about-page">
-				<div className="markdown-body" dangerouslySetInnerHTML={me.getInnerHtml()}></div>
-			</div>
-		);
-	}
 }
 
 export default AboutPage;
