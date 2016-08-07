@@ -8,7 +8,11 @@ class ContactPage extends SimplePage {
 		super(props);
 	}
 
-	
+	getInnerHtml(){
+		return {
+			__html: this.props.user.contact
+		};
+	}
 }
 
 export default ContactPage;

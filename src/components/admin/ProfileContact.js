@@ -3,7 +3,7 @@
  */
 import MarkDownEditor from './MarkDownEditor';
 
-class ProfileResume extends React.Component{
+class ProfileContact extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -25,7 +25,7 @@ class ProfileResume extends React.Component{
             url: '/api/user',
             method: 'PATCH',
             data: {
-                fieldName: 'resumeMD',
+                fieldName: 'contactMD',
                 fieldValue: value
             },
             success: (res)=> {
@@ -41,9 +41,9 @@ class ProfileResume extends React.Component{
     render(){
         let me = this;
         return (
-            <div className="drip-ui-profile-resume">
+            <div className="drip-ui-profile-contact">
                 <div className="tips-info">
-                    <span>Tips:以下信息将在你博客中的&quot;关于我&quot;页面中展示.</span>
+                    <span>Tips:以下信息将在你博客中的&quot;联系为&quot;页面中展示.</span>
                     <button className="btn-1" onClick={me.handleSubmit.bind(me)}>保存</button>
                 </div>
                 <MarkDownEditor ref="editor" defaultValue={me.state.defaultValue}/>
@@ -53,4 +53,4 @@ class ProfileResume extends React.Component{
     }
 }
 
-export default ProfileResume;
+export default ProfileContact;

@@ -5,6 +5,7 @@ import Tabs from '../Tabs';
 let {TabPanel} = Tabs;
 import ProfileDetail from './ProfileDetail';
 import ProfileResume from './ProfileResume';
+import ProfileContact from './ProfileContact';
 
 class Profile extends React.Component{
     constructor(props){
@@ -32,7 +33,7 @@ class Profile extends React.Component{
 
     render(){
         let me = this;
-        let {resumeMD, ...other} = me.state.user;
+        let {resumeMD, contactMD, ...other} = me.state.user;
         return (
             <div>
                 <Tabs defaultKey="tab1">
@@ -41,6 +42,9 @@ class Profile extends React.Component{
                     </TabPanel>
                     <TabPanel key="tab2" title="个人档案">
                         <ProfileResume value={resumeMD}/>
+                    </TabPanel>
+                    <TabPanel key="tab3" title="联系方式">
+                        <ProfileContact value={contactMD}/>
                     </TabPanel>
                 </Tabs>
             </div>
