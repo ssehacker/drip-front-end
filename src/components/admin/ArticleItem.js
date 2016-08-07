@@ -46,7 +46,7 @@ class ArticleItem extends React.Component{
 					<h1><a target="_blank" href={url}>{me.props.title}</a></h1>
 					<p className="tips">
 						<span><i className="iconfont icon-calendar"></i>{date.toLocaleDateString()}</span>
-						<span><i className="iconfont icon-view"></i>{440}</span>
+						<span><i className="iconfont icon-view"></i>{me.props.viewCount || 0}</span>
 						<span><i className="iconfont icon-pinglun"></i>{11}</span>
 						<span><i className="iconfont icon-zan"></i>{4}</span>
 					</p>

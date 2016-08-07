@@ -217,11 +217,30 @@
 			a {
 				text-decoration: none;
 				color: #666;
+				width: 80%;
+				display: inline-block;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				overflow: hidden;
 				&:hover {
 					color: #333;
 				}
 				&:active {
 					color: #ccc;
+				}
+			}
+			p {
+				display: inline-block;
+				font-size: 13px;
+				font-weight: normal;
+				color: #666;
+				width: 20%;
+				text-align: right;
+				vertical-align: top;
+				span{
+					.iconfont{
+						margin-right: 5px;
+					}
 				}
 			}
 		}
@@ -350,7 +369,7 @@
 		height: 50px;
 		line-height: 50px;
 		text-align: left;
-		font-size: 1.5em;
+		font-size: 2.25em;
 		font-weight: bold;
 		color: #333;
 		padding-left: 45px;
@@ -361,6 +380,12 @@
 		height: 50px;
 		line-height: 50px;
 		padding-left: 45px;
+		span {
+			margin-right: 15px;
+			.iconfont {
+				margin-right: 5px;
+			}
+		}
 	}
 	.drip-ui-article-content {
 		padding-top: 50px;

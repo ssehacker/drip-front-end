@@ -16,12 +16,16 @@ class ArticlePreviewItem extends React.Component{
 			background: 'url('+this.props.preImg+')', 
 			backgroundRepeat: 'no-repeat'
 		};
+		let me = this;
 		return (
 			<Box className='drip-ui-article-item'>
-				<h4><Link to={'/article/'+this.props._id}>{this.props.title}</Link></h4>
+				<h4>
+					<Link to={'/article/'+me.props._id}>{me.props.title}</Link>
+					<p><span><i className="iconfont icon-view"></i>{me.props.viewCount}</span></p>
+				</h4>
 				<div className='cover'>
-					<img src={this.parseCoding(this.props.preImg)}/>
-					<Link to={'/article/'+this.props._id} className='drip-ui-article-item-link'>
+					<img src={me.parseCoding(me.props.preImg)}/>
+					<Link to={'/article/'+me.props._id} className='drip-ui-article-item-link'>
 						<Button>查看详情</Button>
 					</Link>
 				</div>

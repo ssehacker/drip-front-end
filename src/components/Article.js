@@ -29,8 +29,11 @@ class Article extends React.Component{
 	render(){
 		return (
 			<article className='drip-ui-article'>
-				<h4 className='drip-ui-article-title'>{this.state.article.title}</h4>
-				<p className='drip-ui-article-date'>{new Date(parseInt(this.state.article.createDate)).toLocaleDateString()}</p>
+				<h1 className='drip-ui-article-title'>{this.state.article.title}</h1>
+				<p className='drip-ui-article-date'>
+					<span><i className="iconfont icon-calendar"></i>{new Date(parseInt(this.state.article.createDate)).toLocaleDateString()}</span>
+					<span><i className="iconfont icon-view"></i>{this.state.article.viewCount}</span>
+				</p>
 				<section dangerouslySetInnerHTML = {{__html : this.state.article.content}} className='drip-ui-article-content markdown-body'>
 
 				</section>
