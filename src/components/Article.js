@@ -29,7 +29,7 @@ class Article extends React.Component{
 	render(){
 		return (
 			<article className='drip-ui-article'>
-				<h1 className='drip-ui-article-title'>{this.state.article.title}</h1>
+				<h1 title={this.state.article.title} className='drip-ui-article-title'>{this.state.article.title}</h1>
 				<p className='drip-ui-article-date'>
 					<span><i className="iconfont icon-calendar"></i>{new Date(parseInt(this.state.article.createDate)).toLocaleDateString()}</span>
 					<span><i className="iconfont icon-view"></i>{this.state.article.viewCount}</span>
