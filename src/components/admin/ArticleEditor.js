@@ -3,6 +3,8 @@
  */
 
 import MarkDownEditor from './MarkDownEditor';
+import dialog from '../Dialog';
+import Tag from '../Tag';
 
 class ArticleEditor extends React.Component {
     constructor(props){
@@ -17,6 +19,14 @@ class ArticleEditor extends React.Component {
     handleTitleChange(e){
         this.setState({
             title: e.target.value
+        });
+    }
+
+    handleSubmitClick(){
+        dialog(<Tag />, {
+            title: '标签',
+            confirmTitle: '立即发表',
+            abortTitle: '稍等,我再润色一下~'
         });
     }
 
@@ -77,7 +87,7 @@ class ArticleEditor extends React.Component {
                 <div className="drip-ui-article-title">
                     <div className="drip-ui-article-title-label clearfix">
                         <h3>文章标题</h3>
-                        <button className="drip-ui-button" onClick={me.handleSubmit.bind(me)}>{me.updatedArticle ? '更新': '发表'}</button>
+                        <button className="drip-ui-button" onClick={me.handleSubmitClick.bind(me)}>{me.updatedArticle ? '更新': '发表'}</button>
                     </div>
                     <input onChange={me.handleTitleChange.bind(me)} defaultValue={this.updatedArticle && this.updatedArticle.title || ''} name="title"/>
                 </div>

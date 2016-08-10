@@ -81,8 +81,14 @@ function dialog(element, props){
         }, 0);
     };
     let abort = props.abort;
-    props.abort = ()=>{
-        abort && abort();
+    props.abort = function(){
+        abort && abort.call(this);
+        cleanup();
+    };
+
+    let confirm = props.confirm;
+    props.confirm = function(){
+        confirm && confirm.call(this);
         cleanup();
     };
 
