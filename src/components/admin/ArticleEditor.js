@@ -4,7 +4,7 @@
 
 import MarkDownEditor from './MarkDownEditor';
 import dialog from '../Dialog';
-import Tag from '../Tag';
+import Tag from '../TokenField';
 
 class ArticleEditor extends React.Component {
     constructor(props){
@@ -14,6 +14,10 @@ class ArticleEditor extends React.Component {
         this.state = {
             title: this.updatedArticle && this.updatedArticle.title || ''
         };
+    }
+
+    componentDidMount(){
+        this.handleSubmitClick();
     }
 
     handleTitleChange(e){
