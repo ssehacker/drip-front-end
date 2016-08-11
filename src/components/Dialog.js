@@ -26,11 +26,12 @@ class Dialog extends React.Component{
 
     render(){
         let t = this;
+        let children = React.cloneElement(t.props.children, {ref: 'child'});
         return (
             <div ref="dialog" className={classnames('drip-ui-dialog', t.props.className )}>
                 <h3>{t.props.title}</h3>
                 <div className="drip-ui-dialog-content">
-                    {t.props.children}
+                    {children}
                 </div>
                 <div className="drip-ui-dialog-btn">
                     <a onClick={t.confirm.bind(t)} href="#">{t.props.confirmTitle}</a>
@@ -97,7 +98,7 @@ function dialog(element, props){
 
     let dialog = <Dialog {...props}>{element}</Dialog>;
 
-    ReactDOM.render(dialog, wrapper);
+    window.aa = ReactDOM.render(dialog, wrapper);
 }
 
 export default dialog;

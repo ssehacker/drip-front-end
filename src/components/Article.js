@@ -26,13 +26,22 @@ class Article extends React.Component{
 		}
 	}
 
+	renderTags(){
+		let tags = this.state.article && this.state.article.tags;
+		return tags && tags.map((tag)=>{
+			return (<span className="tag" key={'tag'+tag}><i className="iconfont icon-tag"></i><a>{tag}</a></span>);
+		});
+	}
+
 	render(){
+		let me = this;
 		return (
 			<article className='drip-ui-article'>
 				<h1 title={this.state.article.title} className='drip-ui-article-title'>{this.state.article.title}</h1>
 				<p className='drip-ui-article-date'>
 					<span><i className="iconfont icon-calendar"></i>{new Date(parseInt(this.state.article.createDate)).toLocaleDateString()}</span>
 					<span><i className="iconfont icon-view"></i>{this.state.article.viewCount}</span>
+					{ me.renderTags() }
 				</p>
 				<section dangerouslySetInnerHTML = {{__html : this.state.article.content}} className='drip-ui-article-content markdown-body'>
 

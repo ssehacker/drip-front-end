@@ -6,7 +6,7 @@ class TokenField extends React.Component{
 		super(props);
 		this.state = {
 			tokenFieldWidth: 0,
-			labels: ['苹果', '香蕉'],
+			labels: props.tokens || [],
 			tokenValue: ''
 		};
 	}
@@ -28,18 +28,22 @@ class TokenField extends React.Component{
 		window.wrapper = wrapper;
 		let wrapperWidth = wrapper.offsetWidth;
 		let labelsWidth = 12+12+2;
+		let minWidth = 80; //tokenInputField 的最小长度
 		wrapper.querySelectorAll('.token-label').forEach((node)=>{
 
 			labelsWidth += node.offsetWidth +4;
 			if(labelsWidth> wrapperWidth){
 				labelsWidth = 12+12+2 + node.offsetWidth +4;
+			}else if(wrapperWidth - labelsWidth<minWidth){
+				labelsWidth = 12+12+2;
 			}
 		});
 
 		console.log('wrapperWidth===', wrapperWidth);
-		if(wrapperWidth-labelsWidth !== this.state.tokenFieldWidth){
+		//防止重复渲染
+		if(wrapperWidth-labelsWidth-1 !== this.state.tokenFieldWidth){
 			this.setState({
-				tokenFieldWidth: wrapperWidth-labelsWidth
+				tokenFieldWidth: wrapperWidth-labelsWidth-1
 			});
 		}
 

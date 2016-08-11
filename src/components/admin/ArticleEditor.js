@@ -14,10 +14,11 @@ class ArticleEditor extends React.Component {
         this.state = {
             title: this.updatedArticle && this.updatedArticle.title || ''
         };
+        this.tags = [];
     }
 
     componentDidMount(){
-        this.handleSubmitClick();
+        // this.handleSubmitClick();
     }
 
     handleTitleChange(e){
@@ -27,17 +28,32 @@ class ArticleEditor extends React.Component {
     }
 
     handleSubmitClick(){
-        dialog(<Tag />, {
-            title: '标签',
-            confirmTitle: '立即发表',
-            abortTitle: '稍等,我再润色一下~'
-        });
+        let me = this;
+        let content = this.refs.editor.getValue();
+        let title = this.state.title;
+        if(title && content){
+            dialog(<Tag />, {
+                title: '标签',
+                confirmTitle: '立即发表',
+                abortTitle: '稍等,我再润色一下~',
+                confirm: function(){
+                    //此处的this指向 Dialog实例
+                    console.log(this.refs.child.getTokens() );
+                    me.tags = this.refs.child.getTokens();
+
+                    me.handleSubmit();
+                }
+            });
+        }else{
+            alert('标题或者内容不能为空啊亲~');
+        }
+
     }
 
     handleSubmit(){
         let content = this.refs.editor.getValue();
         let title = this.state.title;
-
+        let tags = this.tags;
 
         if(title && content){
             let art = this.updatedArticle;
@@ -47,7 +63,8 @@ class ArticleEditor extends React.Component {
                     method: 'PUT',
                     data: {
                         title,
-                        content
+                        content,
+                        tags
                     },
                     success: (res)=>{
                         if(res.code ===0){
@@ -65,7 +82,8 @@ class ArticleEditor extends React.Component {
                     method: 'POST',
                     data: {
                         content,
-                        title
+                        title,
+                        tags
                     },
                     success: function(res){
                         if(res.code ===0){
@@ -77,8 +95,6 @@ class ArticleEditor extends React.Component {
                     }
                 });
             }
-        }else{
-            alert('标题或者内容不能为空啊亲~');
         }
 
     }
