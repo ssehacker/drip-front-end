@@ -2,7 +2,7 @@
  * Created by ssehacker on 16/7/24.
  */
 import classnames from 'classnames';
-import util from './Util';
+import util from '../Util';
 
 class ProfileDetail extends React.Component{
     constructor(props){
