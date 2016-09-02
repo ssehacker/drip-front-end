@@ -22,7 +22,7 @@ class Article extends React.Component{
 						alert(res.msg);
 					}
 				}.bind(this)
-			})
+			});
 		}
 	}
 

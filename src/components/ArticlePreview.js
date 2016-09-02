@@ -6,22 +6,38 @@ class ArticlePreview extends React.Component{
 	constructor(props){
 		super(props);
 	}
+
+	renderContent(){
+		return this.props.articles.map((article,index)=> {
+			let datetime = new Date(parseInt(article.createDate));
+			return (
+				<div key={'article.id'+index} className='drip-ui-article-item-wrapper'>
+					<CalendarDecorator datetime={datetime}/>
+					<ArticlePreviewItem {...article} />
+				</div>
+			);
+		});
+	}
+
+	renderLoadMore(){
+		if(this.props.hasMoreData){
+			return (
+				<div className="drip-ui-load-more">
+					正在加载...
+				</div>
+			);
+		}
+	}
 	
 	render(){
+		let me = this;
 		return (
-			<div className='drip-ui-article-preview'>
-				<TimeLine/>
-				{
-					this.props.articles.map((article,index)=> {
-						let datetime = new Date(parseInt(article.createDate));
-						return (
-							<div key={'article.id'+index} className='drip-ui-article-item-wrapper'>
-								<CalendarDecorator datetime={datetime}/>
-								<ArticlePreviewItem {...article} />
-							</div>
-							);
-					})
-				}
+			<div>
+				<div className='drip-ui-article-preview'>
+					<TimeLine/>
+					{ me.renderContent() }
+				</div>
+				{me.renderLoadMore() }
 			</div>
 			);
 	}
