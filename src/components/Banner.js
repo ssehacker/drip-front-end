@@ -1,5 +1,4 @@
 import FlipCard from './FlipCard';
-import util from './Util';
 
 const {Front, Back} =  FlipCard;
 
@@ -33,11 +32,10 @@ class Banner extends React.Component{
 
 	render(){
 		let t = this;
-		let config = util.loadConfig();
 		return (
 			<div className='drip-ui-banner' style={{background:t.colors[t.state.bgIndex]}}>
 				<FlipCard className='drip-ui-photo'>
-					<Front><img src={ config.cdn + this.props.photo}/></Front>
+					<Front><img src={  this.props.photo}/></Front>
 					<Back>
 						<div className='drip-ui-photo-title'>
 							<h4>醒醒</h4>
