@@ -372,6 +372,20 @@
 		text-align: center;
 	}
 }
+//hidden footer of disqus
+#disqus_thread {
+	position: relative;
+	margin-top: 10px;
+}
+#disqus_thread:after {
+	content: "";
+	display: block;
+	height: 55px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	background: white;
+}
 
 .drip-ui-article {
 	width: 90%;
