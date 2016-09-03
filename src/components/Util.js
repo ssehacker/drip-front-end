@@ -15,32 +15,6 @@ util.formatDate = function(datetime){
 	return new (Date.bind.apply(Date, datetime.match(/(\d+)/g)));
 };
 
-util.loadScript = function (url, attrs, callback) {
-	var d = document, s = d.createElement('script');
-	s.src = url;
-	for(let p in attrs){
-		s.setAttribute(p, attrs[p]);
-	}
-
-	if(s.readyState) {  //IE
-		s.onreadystatechange = function() {
-			console.log('========IE');
-			if ( s.readyState === "loaded" || s.readyState === "complete" ) {
-				console.log('========EXEC');
-				s.onreadystatechange = null;
-				callback && callback();
-			}
-		};
-	} else {  //Others
-		console.log('========OTHER');
-		s.onload = function() {
-			console.log('========EXEC');
-			callback && callback();
-		};
-	}
-	(d.head || d.body).appendChild(s);
-};
-
 util.loadConfig = function(){
 	let config;
 	if(__config.env === 'dev'){

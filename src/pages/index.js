@@ -33,7 +33,7 @@ class ArticlePreviewPage extends CommonNode {
 		me.fetchData(me.currentPage);
 
 		let lastScrollTop = 0;
-		me.handleFetchData = util.throttle(function (e){
+		window.addEventListener('scroll', util.throttle(function (e){
 			var st = window.pageYOffset || document.documentElement.scrollTop;
 
 			//鼠标滚轮向下滑动 且 到达底部
@@ -45,13 +45,7 @@ class ArticlePreviewPage extends CommonNode {
 			}
 			lastScrollTop = st;
 
-		}, 100);
-
-		ReactDOM.findDOMNode(me).addEventListener('scroll',me.handleFetchData , false);
-	}
-
-	componentWillUnmount(){
-		ReactDOM.findDOMNode(this).removeEventListener('scroll', this.handleFetchData, false);
+		}, 100), false);
 	}
 
 	fetchData(currentPage){
