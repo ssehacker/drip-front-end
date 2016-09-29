@@ -18,6 +18,7 @@ class Article extends React.Component{
 	}
 
 	componentDidMount(){
+		let me = this;
 		let rexRes = location.hash.match(/#\/article\/(\w+)\??/);
 		if(rexRes && rexRes.length ===2){
 			let articleId = rexRes[1];
@@ -29,6 +30,9 @@ class Article extends React.Component{
 						this.setState({
 							article: res.article
 						});
+
+						me.loadChangYan();
+
 					}else{
 						alert(res.msg);
 					}
@@ -36,63 +40,25 @@ class Article extends React.Component{
 			});
 		}
 
+	}
 
-		let me = this;
-		if(!window.disqus_config){
-			window.disqus_config = function () {
-				this.page.url = 'http://zhouyong.1xue.me:8000/#disqus_thread';  // Replace PAGE_URL with your page's canonical URL variable
-				this.page.identifier = me.articleId; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-			};
-		}
-		(function() { // DON'T EDIT BELOW THIS LINE
-			if(typeof DISQUS !== 'undefined'){ //AJAX load
-				let config = util.loadConfig();
-				DISQUS.reset({
-					reload: true,
-					config: function(){
-						this.page.identifier = me.articleId;
-						this.page.url = config.cdn + '/#!newthread';
-					}
-				});
-				console.log('It\'s not first loading...');
-				setTimeout(function(){
-					console.log('call setTimeout...');
-					DISQUSWIDGETS.getCount();
-				}, 500);
-				let commentCount = window._data[me.articleId] || 0;
-				$('.disqus-comment-count').html( commentCount || 0);
+	loadChangYan(){
+		let comment = ReactDOM.findDOMNode(this.refs.comment);
+		$(comment).html('<div id="SOHUCS" sid='+this.state.article._id+'></div>');
 
-			}else{	//first load
-				console.log('first loading...');
-				util.loadScript('//drip-blog-system.disqus.com/embed.js', {
-					'data-timestamp': Date.now()
-				}, function(){
-					try{
-						window._data = window._data || {};
+		util.loadScript('//changyan.sohu.com/upload/changyan.js', {charset: 'utf-8'}, ()=> {
+			window.changyan.api.config({
+				appid: 'cyszO9nGq',
+				conf: 'prod_1a7335ccb50ddcf155051e3ea9fc1361'
+			});
+		});
+		util.loadScript('//assets.changyan.sohu.com/upload/plugins/plugins.count.js', {charset: 'utf-8'});
+	}
 
-						DISQUSWIDGETS.displayCount = function(obj){
-							console.log(JSON.stringify(obj) );
-							let comment = obj.counts && obj.counts[0] && obj.counts[0];
-							if(comment){
-								window._data[comment.id] = comment.comments;
-							}
-							$('.disqus-comment-count').html( comment && comment.comments || 0);
-						};
-						console.log('get count...');
-						console.log('DISQUSWIDGETS.getCount===', JSON.stringify(DISQUSWIDGETS));
-						DISQUSWIDGETS.getCount();
-					}catch(e){
-						console.log(e);
-					}
-				});
-
-			}
-
-
-		})();
-
-
-
+	componentWillUnmount(){
+		window.changyan = undefined;
+		window.cyan = undefined;
+		$('iframe').remove();
 	}
 
 	renderTags(){
@@ -104,21 +70,22 @@ class Article extends React.Component{
 
 	render(){
 		let me = this;
+		window.aa = this.state.article;
 		return (
 			<article className='drip-ui-article'>
 				<h1 title={this.state.article.title} className='drip-ui-article-title'>{this.state.article.title}</h1>
 				<p className='drip-ui-article-date'>
-					<span><i className="iconfont icon-calendar"></i>{new Date(parseInt(this.state.article.createDate)).toLocaleDateString()}</span>
-					<span><i className="iconfont icon-view"></i>{this.state.article.viewCount}</span>
+					<span><i className="iconfont icon-calendar"/>{new Date(parseInt(this.state.article.createDate)).toLocaleDateString()}</span>
+					<span><i className="iconfont icon-view"/>{this.state.article.viewCount}</span>
 					<span>
-						<i className="iconfont icon-pinglun"></i>
-						<span className="disqus-comment-count" data-disqus-identifier={me.articleId} ></span>
+						<i className="iconfont icon-pinglun"/>
+						<a href="#SOHUCS" id="changyan_count_unit"/>
 					</span>
 					{ me.renderTags() }
 				</p>
 				<section dangerouslySetInnerHTML = {{__html : this.state.article.content}} className='drip-ui-article-content markdown-body'>
 				</section>
-				<div id="disqus_thread"></div>
+				<div className="drip-changyan" ref="comment"></div>
 			</article>
 			);
 	}

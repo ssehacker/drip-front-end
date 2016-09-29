@@ -5,6 +5,7 @@ import ArticleItem from './ArticleItem';
 import _ from 'underscore';
 import classnames from 'classnames';
 import CommonNode from '../basic/CommonNode';
+import util from '../Util';
 
 class Article extends CommonNode{
     constructor(props){
@@ -33,6 +34,13 @@ class Article extends CommonNode{
                     this.setState({
                         articles: res.articles
                     });
+
+                    setTimeout(()=> {
+                        util.loadScript(
+                            '//changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyszO9nGq',
+                            {id: 'cy_cmt_num'}
+                        );
+                    })
 
                 }else{
                     alert(res.msg);

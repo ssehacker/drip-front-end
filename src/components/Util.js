@@ -24,17 +24,13 @@ util.loadScript = function (url, attrs, callback) {
 
 	if(s.readyState) {  //IE
 		s.onreadystatechange = function() {
-			console.log('========IE');
 			if ( s.readyState === "loaded" || s.readyState === "complete" ) {
-				console.log('========EXEC');
 				s.onreadystatechange = null;
 				callback && callback();
 			}
 		};
 	} else {  //Others
-		console.log('========OTHER');
 		s.onload = function() {
-			console.log('========EXEC');
 			callback && callback();
 		};
 	}
