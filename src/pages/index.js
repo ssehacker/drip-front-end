@@ -47,7 +47,7 @@ class ArticlePreviewPage extends CommonNode {
 
 		}, 100);
 
-		ReactDOM.findDOMNode(me).addEventListener('scroll',me.handleFetchData , false);
+		window.addEventListener('scroll',me.handleFetchData , false);
 	}
 
 	componentWillUnmount(){
