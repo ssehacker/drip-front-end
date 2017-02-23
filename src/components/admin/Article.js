@@ -24,7 +24,12 @@ class Article extends CommonNode{
 
     fetchData(){
         $.ajax({
-            url: '/api/article?pageSize='+this.pageSize+'&currentPage='+this.currentPage,
+            url: '/api/article',
+            data: {
+                pageSize: this.pageSize,
+                currentPage: this.currentPage,
+                username: localStorage.getItem('username'),
+            },
             method: 'GET',
             success: (res)=> {
                 if(res.code ===0){

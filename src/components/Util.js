@@ -39,7 +39,7 @@ util.loadScript = function (url, attrs, callback) {
 
 util.loadConfig = function(){
 	let config;
-	if(__config.env === 'dev'){
+	if(window._env === 'dev'){
 		config = require('../config/config.dev.js');
 	}else {
 		config = require('../config/config.prod.js');

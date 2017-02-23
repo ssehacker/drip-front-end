@@ -1,11 +1,6 @@
 /**
  * Created by ssehacker on 16/7/9.
  */
-window.__config = {
-    env: 'dev'
-};
-
-
 import Menu from '../components/admin/Menu';
 
 let { Router, Route, Link, hashHistory, IndexRoute} = ReactRouter;

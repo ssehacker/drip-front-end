@@ -18,7 +18,7 @@ class Page extends React.Component{
 	componentDidMount(){
 		let me = this;
 		$.ajax({
-			url: '/api/profile',
+			url: `/api/users/${xusername}`,
 			method: 'GET',
 			success: (res)=>{
 				if(res.code ===0){

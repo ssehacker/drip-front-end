@@ -1,105 +1,173 @@
-window.__config = {
-	env: 'dev'
-};
-
-
-import ArticlePreview from '../components/ArticlePreview';
-import Page from '../components/Page';
-import util from '../components/Util';
-import Article from '../components/Article';
-import AboutPage from '../components/AboutPage';
-import ContactPage from '../components/ContactPage'
-import CommonNode from '../components/basic/CommonNode';
-
-require('../app/less/common.less');
-require('../app/less/main.less');
+/**
+ * Created by ssehacker on 16/7/12.
+ */
 
 let { Router, Route, Link, hashHistory, IndexRoute} = ReactRouter;
 
+require('../app/less/common.less');
+require('../app/less/main.less');
+require('../app/less/home.less');
 
-class ArticlePreviewPage extends CommonNode {
-	constructor(props){
-		super(props);
-		this.state= {
-			articles: [],
-			hasMoreData: true
-		};
-		this.currentPage = 1;
-		this.pageSize = 5;
-	}
+import Dialog from '../components/Dialog';
+import Header from '../components/Header';
 
-	componentDidMount(){
-		let me = this;
-		me.fetchData(me.currentPage);
+class HomePage extends React.Component{
+    constructor(props){
+        super(props);
+    }
 
-		let lastScrollTop = 0;
-		me.handleFetchData = util.throttle(function (e){
-			var st = window.pageYOffset || document.documentElement.scrollTop;
-
-			//鼠标滚轮向下滑动 且 到达底部
-			if (st > lastScrollTop
-				&& me.state.hasMoreData
-				&& $(window).scrollTop() + $(window).height() > $('.drip-ui-footer').offset().top) {
-
-				me.fetchData( ++me.currentPage );
-			}
-			lastScrollTop = st;
-
-		}, 100);
-
-		window.addEventListener('scroll',me.handleFetchData , false);
-	}
-
-	componentWillUnmount(){
-		ReactDOM.findDOMNode(this).removeEventListener('scroll', this.handleFetchData, false);
-	}
-
-	fetchData(currentPage){
-		let me = this;
-		$.ajax({
-			url: '/api/article',
-			method: 'GET',
-			data: {currentPage: currentPage, pageSize: me.pageSize},
-			success: function(res){
-				if(res.articles && res.articles.length){
-					me.loading.stop();
-					me.setState({
-						articles: me.state.articles.concat(res.articles),
-						hasMoreData: res.currentPage < res.pageCount
-					});
-				}
-			}
-		});
-	}
-
-	render(){
-
-		return (
-			<ArticlePreview articles={this.state.articles} hasMoreData={this.state.hasMoreData}/>
-			);
-	}
+    render(){
+        return (
+          <div>index page</div>
+        );
+    }
 }
 
-class ArticlePage extends React.Component {
-	constructor(props){
-		super(props);
-	}
+class ThemePage extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return (
+            <div>theme page</div>
+        );
+    }
+}
 
-	render(){
-		return (<Article />);
-	}
+class TemplatePage extends React.Component{
+    constructor(props){
+        super(props);
+    }
+
+    initHeaderOption(){
+        let items = [
+            {
+                title:'首页',
+                url: '/',
+                iconClass: 'icon-article1'
+            },
+            {
+                title: '主题',
+                url: '/theme',
+                iconClass: 'icon-about1'
+            },
+            {
+                title: '反馈',
+                url: '/feedback',
+                iconClass: 'icon-contact'
+            }
+        ];
+
+        let links=[
+            {
+                title: '登录',
+                onClick: function(){
+                    Dialog(<div className="login">
+                            <div className="dialog-line">
+                                <span>用户名:</span>
+                                <input name="username" type="text"/></div>
+                            <div className="dialog-line"><span>密&emsp;码:</span><input name="password" type="password"/></div>
+                        </div>, {
+                        confirm: function(){
+                            let dialog = ReactDOM.findDOMNode(this);
+
+                            let username = dialog.querySelector('input[name=username]').value;
+                            let password = dialog.querySelector('input[name=password]').value;
+
+                            $.ajax({
+                                url: '/api/login',
+                                method: 'POST',
+                                data: {username, password},
+                                success: function(data){
+                                    if(data.code===0){
+                                        //login success.
+                                        localStorage.setItem('username', username);
+                                        location.href = '/admin';
+                                    }else{
+                                        alert(data.msg);
+                                    }
+                                }
+                            })
+                            
+
+                        },
+                        abort: ()=>{console.log('取消')},
+                        confirmTitle: '登录',
+                        abortTitle: '取消',
+                        title: '用户登录'
+                    });
+                }
+
+            },
+            {
+                title: '注册',
+                onClick: function(){
+                    Dialog(<div className="login">
+                        <div className="dialog-line">
+                            <span>用&ensp;户&ensp;名:</span>
+                            <input name="username" type="text"/></div>
+                        <div className="dialog-line"><span>密&emsp;&emsp;码:</span><input name="password" type="password"/></div>
+                        <div className="dialog-line"><span>确认密码:</span><input name="password2" type="password"/></div>
+                    </div>, {
+                        confirm: function(){
+                            let dialog = ReactDOM.findDOMNode(this);
+
+                            let username = dialog.querySelector('input[name=username]').value;
+                            let password = dialog.querySelector('input[name=password]').value;
+                            let password2 = dialog.querySelector('input[name=password2]').value;
+
+                            if(password !==password2){
+                                alert("两次密码输入不同,请重新输入~");
+                                return;
+                            }
+
+                            $.ajax({
+                                url: '/api/user',
+                                method: 'POST',
+                                data: {username, password},
+                                success: function(data){
+                                    if(data.code === 0){
+                                        localStorage.setItem('username',username );
+                                        location.href = '/admin';
+                                    }else{
+                                        alert(data.msg);
+                                    }
+                                }
+                            });
+
+
+                        },
+                        abort: ()=>{console.log('取消')},
+                        confirmTitle: '注册',
+                        abortTitle: '取消',
+                        title: '新用户注册'
+                    });
+                }
+            }
+        ];
+        return {items, links};
+    }
+
+    render(){
+        let me = this;
+        let headerOps = me.initHeaderOption();
+
+        return (
+            <div>
+                <Header {...headerOps}/>
+                {this.props.children}
+                <div>footer</div>
+            </div>
+        );
+    }
 }
 
 ReactDOM.render((
-	<Router history={hashHistory}>
-		<Route path="/" component={Page}>
-			<IndexRoute component={ArticlePreviewPage}/>
-			<Route path="about" component={AboutPage}/>
-			<Route path="contact" component={ContactPage}/>
-			<Route path="article" component={ArticlePreviewPage}/>
-			<Route path="article/:id" component={ArticlePage}/>
-		</Route>
-		
-	</Router>
-) , document.getElementById('app'));
+    <Router history={hashHistory}>
+        <Route path="/" component={TemplatePage}>
+            <IndexRoute component={HomePage}/>
+            <Route path="theme" component={ThemePage}/>
+        </Route>
 
+    </Router>
+) , document.getElementById('app'));

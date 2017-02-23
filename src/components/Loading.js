@@ -1,6 +1,10 @@
 /**
  * Created by ssehacker on 16/8/7.
  */
+import util from '../components/Util';
+
+const cdn = util.loadConfig().cdn;
+console.log(cdn);
 class Loading extends React.Component{
 	constructor(props){
 		super(props);
@@ -9,7 +13,7 @@ class Loading extends React.Component{
 	render(){
 		return (
 			<div className="drip-ui-loading">
-				<img src="../../public/loading.svg"/>
+				<img src={`${cdn}/public/loading.svg`} />
 				<p>正在加载</p>
 			</div>
 		);

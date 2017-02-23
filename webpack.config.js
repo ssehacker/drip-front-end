@@ -4,11 +4,20 @@ var path = require("path");
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+var isDev = process.env.NEO_ENV === 'dev';
+
+var plugins = [
+    new ExtractTextPlugin(`[name].css`),
+];
+ if( !isDev ) {
+   plugins.push( new webpack.optimize.UglifyJsPlugin({minimize: !isDev}));
+ }
+
 module.exports = {
     entry: {
-        app: "./src/pages/index.js",
+        theme: "./src/pages/theme.js",
         admin: "./src/pages/admin.js",
-        home: "./src/pages/home.js"
+        index: "./src/pages/index.js"
     },
     output: {
         path: path.resolve(__dirname, "dist"),
