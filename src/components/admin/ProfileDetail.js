@@ -12,6 +12,7 @@ class ProfileDetail extends React.Component{
             name: this.props.name || '',
             nick: this.props.nick || '',
             domain: this.props.domain || '',
+            customDomain: this.props.customDomain || '',
             desc: this.props.desc || '',
             photo: this.props.photo || ''
         };
@@ -23,6 +24,7 @@ class ProfileDetail extends React.Component{
             name: nextProps.name,
             nick: nextProps.nick,
             domain: nextProps.domain,
+            customDomain: nextProps.customDomain,
             desc: nextProps.desc,
             photo: nextProps.photo
         });
@@ -112,6 +114,17 @@ class ProfileDetail extends React.Component{
     handleImgClick(){
         $('input[name=photo]').trigger('click');
     }
+
+    parseUrl(domain, port) {
+        if(!domain) {
+            return '';
+        }
+
+        if(!port || port == 80) {
+            return domain;
+        }
+        return domain + ':' +port;
+    }
     
     render(){
         //暂时包括: 头像,昵称, 简介(一句话介绍自己),个性域名
@@ -134,13 +147,15 @@ class ProfileDetail extends React.Component{
                 <div className={classnames({'detail-view': true, 'hidden': me.state.mode===1})}>
                     <p><label>用&ensp;户&ensp;名:</label><span>{me.state.name}</span></p>
                     <p><label>昵&emsp;&emsp;称:</label><span>{me.state.nick}</span></p>
-                    <p><label>个性域名:</label><span>{me.state.domain+'.'+config.baseUrl}</span></p>
+                    <p><label>默认域名:</label><span>{me.state.domain+'.'+config.baseUrl}</span></p>
+                    <p><label>个性域名:</label><span>{me.state.customDomain}</span></p>
                     <div><label>简&emsp;&emsp;介:</label><span>{me.state.desc}</span></div>
                 </div>
                 <div className={classnames({'detail-edit': true, 'hidden': me.state.mode===0})}>
                     <p><label>用&ensp;户&ensp;名:</label><input disabled="disabled" type="text" value={me.state.name} onChange={me.onChange.bind(me, 'name')}/></p>
                     <p><label>昵&emsp;&emsp;称:</label><input type="text" value={me.state.nick} onChange={me.onChange.bind(me, 'nick')}/></p>
-                    <p><label>个性域名:</label><input disabled="disabled" type="text" value={me.state.domain+'.'+config.baseUrl} onChange={me.onChange.bind(me, 'domain')}/></p>
+                    <p><label>默认域名:</label><input disabled="disabled" type="text" value={me.state.domain+'.'+config.baseUrl} onChange={me.onChange.bind(me, 'domain')}/></p>
+                    <p><label>个性域名:</label><input type="text" value={me.state.customDomain} onChange={me.onChange.bind(me, 'customDomain')}/></p>
                     <div><label>简&emsp;&emsp;介:</label><textarea value={me.state.desc} onChange={me.onChange.bind(me, 'desc')}/></div>
                 </div>
             </div>

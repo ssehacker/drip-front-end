@@ -1,6 +1,7 @@
 module.exports = {
 	cdn: '//1xue.me:8000',
 	baseUrl: '1xue.me:8000',
+	port: 8080,
 	path: 'dist/',
 	configure: {
 		title: '周勇的博客',
